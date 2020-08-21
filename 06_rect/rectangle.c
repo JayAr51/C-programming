@@ -43,27 +43,27 @@ rectangle intersection(rectangle r1, rectangle r2) {
   r2 = canonicalize(r2);
 
   //Solve Proplem wiht rects that dont intersect
-  /*if (r1.x<r2.x){
+  if (r1.x<r2.x){
     //falls r1 links von r2 liegt
-    if (r1.x+r1.width<=r2.x){
+    if (r1.x+r1.width<r2.x){
       return ri;
     }
   }
   else{
-    if (r2.x+r2.width<=r1.x){
+    if (r2.x+r2.width<r1.x){
       return ri;
     }
   }
   if (r1.y<r2.y){//falls r1 unter von r2 liegt
-    if (r1.y+r1.height<=r2.y){
+    if (r1.y+r1.height<r2.y){
       return ri;
     }
   }
   else{
-    if (r2.y+r2.height<=r1.y){
+    if (r2.y+r2.height<r1.y){
       return ri;
     }
-  }*/
+  }
   // If they do intersect, this is the solution
     ri.x=max(r1.x,r2.x);
     ri.y=max(r1.y,r2.y);
