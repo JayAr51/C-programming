@@ -42,8 +42,8 @@ rectangle intersection(rectangle r1, rectangle r2) {
   r1 = canonicalize(r1);
   r2 = canonicalize(r2);
 
-  //WRITE THIS FUNCTION
-  if (r1.x<r2.x){
+  //Solve Proplem wiht rects that dont intersect
+  /*if (r1.x<r2.x){
     //falls r1 links von r2 liegt
     if (r1.x+r1.width<=r2.x){
       return ri;
@@ -63,7 +63,8 @@ rectangle intersection(rectangle r1, rectangle r2) {
     if (r2.y+r2.height<=r1.y){
       return ri;
     }
-  }
+  }*/
+  // If they do intersect, this is the solution
     ri.x=max(r1.x,r2.x);
     ri.y=max(r1.y,r2.y);
     ri.width=min(r1.x+r1.width,r2.x+r2.width)-ri.x;
