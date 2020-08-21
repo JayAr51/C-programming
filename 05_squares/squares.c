@@ -25,17 +25,6 @@ int min(int num1, int num2) {
     return num2;
   }
 }
-
-int isAtBoarder(int x,int y, rect_t myrect){
-  if ((x==myrect.left || x==myrect.right) && isInRange(y,myrect.top,myrect.bottom)){
-    return 1;
-  }
-  if ((y==myrect.top || y==myrect.bottom) && isInRange(x,myrect.left,myrect.right)){
-    return 1;
-}
-  return 0;
-}
-
 int isInRange(int num,int num1, int num2){
  int  upper=max(num1,num2);
  int  lower=min(num1,num2);
@@ -45,6 +34,18 @@ int isInRange(int num,int num1, int num2){
  else{
    return 0;
  }
+}
+
+int isAtBoarder(int x,int y, rect_t myrect){
+  int iirx=isInRange(x,myrect.left,myrect.right);
+    int iiry=  isInRange(y,myrect.top,myrect.bottom);
+    if ((x==myrect.left || x==myrect.right) && iiry){
+    return 1;
+  }
+  if ((y==myrect.top || y==myrect.bottom) && iirx){
+    return 1;
+}
+  return 0;
 }
 
 void squares(int size1, int x_offset2, int y_offset2, int size2) {
