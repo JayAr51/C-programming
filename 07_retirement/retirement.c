@@ -15,11 +15,12 @@ double balanceAfterInterest(double balance,retire_info info){
 }
 
 
-/*void retirement (int startAge,   //in months
+void retirement (int startAge,   //in months
 		 double initial, //initial savings in dollars
 		 retire_info working, //info about working
 		 retire_info retired) //info about being retired
-*/  
+{
+}
 
 int main(){
   retire_info working;
