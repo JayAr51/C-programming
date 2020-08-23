@@ -46,7 +46,7 @@ int main(){
   while (retired.months>0){
     Age_y=Age/12;
     Age_m=Age%12;
-    printf("Age %3d months %2d you have $%.2lf\n",Age_y,Age_m,initial);
+    printf("Age %3d month %2d you have $%.2lf\n",Age_y,Age_m,initial);
     initial= initialAfterInterest(initial,retired);
     Age++;
     retired.months--;
