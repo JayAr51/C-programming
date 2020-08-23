@@ -8,16 +8,14 @@ struct _retire_info{
 };
 typedef struct _retire_info  retire_info;
 
-double balanceAfterInterest(double balance,retire_info info){
-  balance*=(1+info.rate_of_return);
-  balance+=info.contribution;
-  return balance;
+double initialAfterInterest(double initial,retire_info info){
+  initial*=(1+info.rate_of_return);
+  initial+=info.contribution;
+  return initial;
 }
 
 
-void retirement (int startAge,   //in months		 double initial, //initial savings in dollars
-		 retire_info working, //info about working
-		 retire_info retired) //info about being retired
+void retirement (int startAge,double initial, retire_info working, retire_info retired)
 {
 }
 
@@ -34,13 +32,13 @@ int main(){
   int Age_y;
   int Age_m;
   int Age=327;
-  double balance=21345;
+  double initial=21345;
   //working loop
   while (working.months>0){
     Age_y=Age/12;
     Age_m=Age%12;
-    printf("Age %3d months %2d you have $%.2lf\n",Age_y,Age_m,balance);
-    balance= balanceAfterInterest(balance,working);
+    printf("Age %3d months %2d you have $%.2lf\n",Age_y,Age_m,initial);
+    initial= initialAfterInterest(initial,working);
     Age++;
     working.months--;
 }
@@ -48,8 +46,8 @@ int main(){
   while (retired.months>0){
     Age_y=Age/12;
     Age_m=Age%12;
-    printf("Age %3d months %2d you have $%.2lf\n",Age_y,Age_m,balance);
-    balance= balanceAfterInterest(balance,retired);
+    printf("Age %3d months %2d you have $%.2lf\n",Age_y,Age_m,initial);
+    initial= initialAfterInterest(initial,retired);
     Age++;
     retired.months--;
 }
