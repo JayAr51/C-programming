@@ -17,23 +17,10 @@ double initialAfterInterest(double initial,retire_info info){
 
 void retirement (int startAge,double initial, retire_info working, retire_info retired)
 {
-}
-
-int main(){
-  retire_info working;
-  working.months=489;
-  working.contribution=1000;
-  working.rate_of_return=0.045/12;
-
-  retire_info retired;
-  retired.months=384;
-  retired.contribution=-4000;
-  retired.rate_of_return=0.01/12;
+  int Age=startAge;
   int Age_y;
   int Age_m;
-  int Age=327;
-  double initial=21345;
-  //working loop
+   //working loop
   while (working.months>0){
     Age_y=Age/12;
     Age_m=Age%12;
@@ -51,4 +38,19 @@ int main(){
     Age++;
     retired.months--;
 }
+}
+
+int main(){
+  retire_info working;
+  working.months=489;
+  working.contribution=1000;
+  working.rate_of_return=0.045/12;
+
+  retire_info retired;
+  retired.months=384;
+  retired.contribution=-4000;
+  retired.rate_of_return=0.01/12;
+  int startAge=327;
+  double initial=21345;
+  retirement(startAge,initial,working,retired);
 }
