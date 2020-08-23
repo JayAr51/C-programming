@@ -1,4 +1,4 @@
-Grading at Sun Aug 23 19:26:08 UTC 2020
+Grading at Sun Aug 23 19:36:13 UTC 2020
 Attempting to compile retirement.c
 Checking for struct _retire_info
 Found on line 4, column 1 
@@ -13,12 +13,12 @@ Found on line 9, column 1
 Checking for void retirement (int startAge, double initial,  retire_info working,  retire_info retired)
 Found on line 18, column 1 
 Checking for int main(void)
-Found on line 22, column 1 
+Found on line 43, column 1 
 Trying to run retirement calculator..
 Your file matched the expected output
 Removing your main() and replacing it with our own to run more tests...
 temp2.c: In function ‘_old_removed_main_’:
-temp2.c:54:1: error: control reaches end of non-void function [-Werror=return-type]
+temp2.c:56:1: error: control reaches end of non-void function [-Werror=return-type]
  }
  ^
 cc1: all warnings being treated as errors
