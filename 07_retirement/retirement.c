@@ -15,8 +15,7 @@ double balanceAfterInterest(double balance,retire_info info){
 }
 
 
-void retirement (int startAge,   //in months
-		 double initial, //initial savings in dollars
+void retirement (int startAge,   //in months		 double initial, //initial savings in dollars
 		 retire_info working, //info about working
 		 retire_info retired) //info about being retired
 {
@@ -37,13 +36,13 @@ int main(){
   int Age=327;
   double balance=21345;
   //working loop
-  while (working.month>0){
+  while (working.months>0){
     Age_y=Age/12;
     Age_m=Age%12;
     printf("Age %3d months %2d you have $%.2lf\n",Age_y,Age_m,balance);
     balance= balanceAfterInterest(balance,working);
     Age++;
-    working.monthss--;
+    working.months--;
 }
   //retired loop 
   while (retired.months>0){
