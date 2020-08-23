@@ -37,7 +37,8 @@ void retirement (int startAge,double initial, retire_info working, retire_info r
     initial= initialAfterInterest(initial,retired);
     Age++;
     retired.months--;
-}
+    }
+  return;
 }
 
 int main(){
@@ -53,4 +54,5 @@ int main(){
   int startAge=327;
   double initial=21345;
   retirement(startAge,initial,working,retired);
+  return EXIT_SUCCESS;
 }
