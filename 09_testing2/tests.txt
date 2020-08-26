@@ -1,13 +1,21 @@
+#tie cases
 aaaaa bbbbb
 aaaaa bbbbc
 aaabb bbbbc
 aabbc aabcd
+#missing first
+cbdaa aabcd
 baaca aaacd
 aabbb aaabb
 aabbb abaca
 abdca abdce
 abcde ebdca
+#incorrect number of cards
+aaaaa bbbbbb
 aaaaaa bbbbb
 aaaa bbbbb
+bbbbb aaaa
+#incorrect number of cards
 aaaaa
  abcda
+abcde ebdca aaced
