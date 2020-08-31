@@ -1,0 +1,8 @@
+Grading at Mon Aug 31 18:51:15 UTC 2020
+Attempting to compile test.c
+gcc -o test -ggdb3 test.c
+compiled
+Your file matched the expected output
+Your output matched what we expected
+
+Overall Grade: A
