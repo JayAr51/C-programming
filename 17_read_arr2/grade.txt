@@ -1,0 +1,8 @@
+Grading at Wed Sep  2 14:32:01 UTC 2020
+Attempting to compile test.c
+gcc -ggdb3 -Wall -Werror -std=gnu99 -o test test.c
+compiled
+Your file matched the expected output
+Your output matched what we expected
+
+Overall Grade: A
