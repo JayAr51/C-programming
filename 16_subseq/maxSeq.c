@@ -22,7 +22,7 @@ size_t maxSeq(int * array, size_t n){
   }
   int countCurrentSeq=1;
   int seqMax=array[0];
-  int countSeq[n]={0};
+  int countSeq[n];
   size_t maxSeqLength;
   countSeq[0]=1;
   for (int i=1;i<n;i++){
