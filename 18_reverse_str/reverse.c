@@ -5,14 +5,14 @@
 void reverse(char * str) {
   // evaluating length of String
   char *p1=str;// erstellt einen Pointer der an die Stelle des Strings zeigt
-  int n=1;
+  int n=0;
   while (*p1!=0){
     n++;
     p1++;
-  } //n enthält die Anzahl an Einträgen inklusive \0
-  p1=p1-n+1;
-  char p2[n];
-  strncpy(p2, p1, n); //p2 sollte gleich p1 sein
+  } //n enthält die Anzahl an Einträgen exklusive \0
+  p1=p1-n;
+  char p2[n+1];
+  strncpy(p2, p1, n+1); //p2 sollte gleich p1 sein
   size_t i;
   for (i = 0; i < n && p2[i] != '\0'; i++){
     p1[n-2-i]= p2[i]; //p1 wird umgekehrt und somit auch str
