@@ -10,26 +10,27 @@ void reverse(char * str) {
     return;
   }
   int n=0;
-  while (*p1!='\0'&&n++<294880){
+  while (p1[n]!='\0'&&n<294880){
     n++;
-    p1++;
   }//n enthält die Anzahl an Einträgen exklusive \0
-  if (p1[n+1]=='\0'){
-      p1=p1-n;
-  if (n<2){
-    return;
-  }
+  if (p1[n]=='\0'){
+    // p1=p1-n;
+      if (n<2){
+	return;
+      }
+      else{
+	char p2[n+1];
+	strncpy(p2, p1, n+1); //p2 sollte gleich p1 sein
+	size_t i;
+	for (i = 0; i < n && p2[i] != '\0'; i++){
+	  p1[n-1-i]= p2[i]; //p1 wird umgekehrt und somit auch str
+	}
+      }
+      return;
+    }
   else{
-  char p2[n+1];
-  strncpy(p2, p1, n+1); //p2 sollte gleich p1 sein
-  size_t i;
-  for (i = 0; i < n && p2[i] != '\0'; i++){
-    p1[n-1-i]= p2[i]; //p1 wird umgekehrt und somit auch str
-  }
-  }
-  return;
-    }else
     return;
+  }
 }
 
 int main(void) {
