@@ -15,7 +15,7 @@ void reverse(char * str) {
   strncpy(p2, p1, n+1); //p2 sollte gleich p1 sein
   size_t i;
   for (i = 0; i < n && p2[i] != '\0'; i++){
-    p1[n-2-i]= p2[i]; //p1 wird umgekehrt und somit auch str
+    p1[n-1-i]= p2[i]; //p1 wird umgekehrt und somit auch str
   }
   return;
   //WRITE ME!
