@@ -1,19 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
 
 void reverse(char * str) {
   // evaluating length of String
   char *p1=str;// erstellt einen Pointer der an die Stelle des Strings zeigt
+  if (p1==NULL){
+    return;
+  }
   int n=0;
-  while (*p1!=0){
+  while (*p1!='\0'&&n++<294880){
     n++;
     p1++;
-  } //n enthält die Anzahl an Einträgen exklusive \0
-  p1=p1-n;
+  }//n enthält die Anzahl an Einträgen exklusive \0
+  if (p1[n+1]=='\0'){
+      p1=p1-n;
   if (n<2){
     return;
-  }else{
+  }
+  else{
   char p2[n+1];
   strncpy(p2, p1, n+1); //p2 sollte gleich p1 sein
   size_t i;
@@ -22,7 +28,8 @@ void reverse(char * str) {
   }
   }
   return;
-  //WRITE ME!
+    }else
+    return;
 }
 
 int main(void) {
