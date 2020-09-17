@@ -24,7 +24,7 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
   if (value_diff==0){
     suit_t suit1=(**val1ptr).suit;
     suit_t suit2=(**val2ptr).suit;
-    return suit1 - suit2;
+    return suit2 - suit1;
   }else{
     return value_diff;
   }
