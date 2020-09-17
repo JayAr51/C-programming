@@ -217,7 +217,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 int compare_hands(deck_t * hand1, deck_t * hand2) {
   qsort(hand1->cards,hand1->n_cards,sizeof(hand1->cards[0]),card_ptr_comp);
   qsort(hand2->cards,hand2->n_cards,sizeof(hand2->cards[0]),card_ptr_comp);
-  printhand(hand1);
+  //printhand(hand1);
   hand_eval_t eval1=evaluate_hand(hand1);
   hand_eval_t eval2=evaluate_hand(hand2);
   if (eval1.ranking==eval2.ranking){
