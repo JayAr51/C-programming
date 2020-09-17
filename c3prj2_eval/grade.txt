@@ -1,4 +1,4 @@
-Grading at Thu Sep 17 22:37:49 UTC 2020
+Grading at Thu Sep 17 22:50:40 UTC 2020
 Compiling your code
 rm -f test poker cards.o my-test-main.o *~
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
@@ -11,55 +11,55 @@ Your file matched the expected output
  - Testcase passed
 Testcase 2: Trying hands with pairs
 Valgrind returned an error status
-==1974== Memcheck, a memory error detector
-==1974== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==1974== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==1974== Command: ./test-eval inp.2.txt
-==1974== Parent PID: 1973
-==1974== 
-==1974== Invalid read of size 8
-==1974==    at 0x401D0E: build_hand_from_match (eval.c:202)
-==1974==    by 0x4026AB: evaluate_hand (eval.c:380)
-==1974==    by 0x402AB5: describe_hand (test-eval.c:68)
-==1974==    by 0x402D00: main (test-eval.c:119)
-==1974==  Address 0x52092c0 is 0 bytes after a block of size 48 alloc'd
-==1974==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1974==    by 0x401209: add_card_to (deck-c4.c:29)
-==1974==    by 0x40345F: hand_from_string (input.c:49)
-==1974==    by 0x402C7A: main (test-eval.c:111)
-==1974== 
-==1974== Invalid read of size 8
-==1974==    at 0x400C12: print_hand (deck.c:12)
-==1974==    by 0x402B00: describe_hand (test-eval.c:74)
-==1974==    by 0x402D00: main (test-eval.c:119)
-==1974==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==1974== 
-==1974== 
-==1974== Process terminating with default action of signal 11 (SIGSEGV): dumping core
-==1974==  Access not within mapped region at address 0x0
-==1974==    at 0x400C12: print_hand (deck.c:12)
-==1974==    by 0x402B00: describe_hand (test-eval.c:74)
-==1974==    by 0x402D00: main (test-eval.c:119)
-==1974==  If you believe this happened as a result of a stack
-==1974==  overflow in your program's main thread (unlikely but
-==1974==  possible), you can try to increase the size of the
-==1974==  main thread stack using the --main-stacksize= flag.
-==1974==  The main thread stack size used in this run was 8388608.
-==1974== 
-==1974== HEAP SUMMARY:
-==1974==     in use at exit: 896 bytes in 18 blocks
-==1974==   total heap usage: 146 allocs, 128 frees, 11,444 bytes allocated
-==1974== 
-==1974== LEAK SUMMARY:
-==1974==    definitely lost: 0 bytes in 0 blocks
-==1974==    indirectly lost: 0 bytes in 0 blocks
-==1974==      possibly lost: 0 bytes in 0 blocks
-==1974==    still reachable: 896 bytes in 18 blocks
-==1974==         suppressed: 0 bytes in 0 blocks
-==1974== Rerun with --leak-check=full to see details of leaked memory
-==1974== 
-==1974== For counts of detected and suppressed errors, rerun with: -v
-==1974== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==2286== Memcheck, a memory error detector
+==2286== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==2286== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==2286== Command: ./test-eval inp.2.txt
+==2286== Parent PID: 2285
+==2286== 
+==2286== Invalid read of size 8
+==2286==    at 0x401D1E: build_hand_from_match (eval.c:203)
+==2286==    by 0x4026BB: evaluate_hand (eval.c:381)
+==2286==    by 0x402AC5: describe_hand (test-eval.c:68)
+==2286==    by 0x402D10: main (test-eval.c:119)
+==2286==  Address 0x52092c0 is 0 bytes after a block of size 48 alloc'd
+==2286==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2286==    by 0x401209: add_card_to (deck-c4.c:29)
+==2286==    by 0x40346F: hand_from_string (input.c:49)
+==2286==    by 0x402C8A: main (test-eval.c:111)
+==2286== 
+==2286== Invalid read of size 8
+==2286==    at 0x400C12: print_hand (deck.c:12)
+==2286==    by 0x402B10: describe_hand (test-eval.c:74)
+==2286==    by 0x402D10: main (test-eval.c:119)
+==2286==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==2286== 
+==2286== 
+==2286== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==2286==  Access not within mapped region at address 0x0
+==2286==    at 0x400C12: print_hand (deck.c:12)
+==2286==    by 0x402B10: describe_hand (test-eval.c:74)
+==2286==    by 0x402D10: main (test-eval.c:119)
+==2286==  If you believe this happened as a result of a stack
+==2286==  overflow in your program's main thread (unlikely but
+==2286==  possible), you can try to increase the size of the
+==2286==  main thread stack using the --main-stacksize= flag.
+==2286==  The main thread stack size used in this run was 8388608.
+==2286== 
+==2286== HEAP SUMMARY:
+==2286==     in use at exit: 896 bytes in 18 blocks
+==2286==   total heap usage: 146 allocs, 128 frees, 11,444 bytes allocated
+==2286== 
+==2286== LEAK SUMMARY:
+==2286==    definitely lost: 0 bytes in 0 blocks
+==2286==    indirectly lost: 0 bytes in 0 blocks
+==2286==      possibly lost: 0 bytes in 0 blocks
+==2286==    still reachable: 896 bytes in 18 blocks
+==2286==         suppressed: 0 bytes in 0 blocks
+==2286== Rerun with --leak-check=full to see details of leaked memory
+==2286== 
+==2286== For counts of detected and suppressed errors, rerun with: -v
+==2286== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 Testcase 3: Trying hands with 2 pairs
  Checking the output 
 Your file matched the expected output
@@ -86,7 +86,11 @@ Your file matched the expected output
  - Testcase passed
 Testcase 9: Trying hands with straight flushes
  Checking the output 
-Line_63_did_not_match
+Line_77_did_not_match
+Line_80_did_not_match
+Line_81_did_not_match
+Line_90_did_not_match
+Line_93_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -151,61 +155,61 @@ Hand 2:								Hand 2:
 --------							--------
 Ad Kh Qh Jh Js 0h 9h 						Ad Kh Qh Jh Js 0h 9h 
  - Flush in suit h						 - Flush in suit h
- - Straight at index 0					      <
- - Straight flush at index 1				      <
- - The most of a kind is 2 of a kind (at index 3 / value J)   <
- - No secondary pair					      <
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      <
- - 5 cards used for hand: Kh Qh Jh 0h 9h 		      <
-Comparison : 						      <
---------------						      <
-Hand 1 wins!						      <
-============================				      <
-Hand 1:							      <
---------						      <
-Ah Kc 5h 4h 3h 2h 					      <
- - Flush in suit h					      <
- - Straight flush at index 0				      <
- - The most of a kind is 1 of a kind (at index 0 / value A)   <
- - No secondary pair					      <
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      <
- - 5 cards used for hand: 5h 4h 3h 2h Ah 		      <
-Hand 2:							      <
---------						      <
-Ac 6c 5c 4c 3c 2c 					      <
- - Flush in suit c					      <
- - Straight flush at index 0					 - Straight flush at index 0
+ - Straight at index 0						 - Straight at index 0
  - Straight flush at index 1					 - Straight flush at index 1
- - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 2 of a kind (at index 3 / value J)
- - No secondary pair					      <
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      <
- - 5 cards used for hand: 5c 4c 3c 2c Ac 		      <
-Comparison : 						      <
---------------						      <
-Tie							      <
-============================				      <
-Hand 1:							      <
---------						      <
-As Ks Qs Js 0s 						      <
- - Flush in suit s					      <
- - Straight flush at index 0				      <
- - The most of a kind is 1 of a kind (at index 0 / value A)   <
- - No secondary pair					      <
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      <
- - 5 cards used for hand: As Ks Qs Js 0s 		      <
-Hand 2:							      <
---------						      <
-As 5s 4s 3s 2s 						      <
- - Flush in suit s					      <
- - Straight flush at index 0				      <
- - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - The most of a kind is 2 of a kind (at index 3 / value J)	 - The most of a kind is 2 of a kind (at index 3 / value J)
  - No secondary pair						 - No secondary pair
- - evaluate_hand's ranking: STRAIGHT_FLUSH		      <
- - 5 cards used for hand: 5s 4s 3s 2s As 		      <
-Comparison : 						      <
---------------						      <
-Hand 1 wins!						      <
-============================				      <
+ - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
+ - 5 cards used for hand: Kh Qh Jh 0h 9h 			 - 5 cards used for hand: Kh Qh Jh 0h 9h 
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Kc 5h 4h 3h 2h 						Ah Kc 5h 4h 3h 2h 
+ - Flush in suit h						 - Flush in suit h
+ - Straight flush at index 0				      |	 - Straight at index 1
+ - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: 5h 4h 3h 2h Ah 		      |	 - 5 cards used for hand: Ah 5h 4h 3h 2h 
+Hand 2:								Hand 2:
+--------							--------
+Ac 6c 5c 4c 3c 2c 						Ac 6c 5c 4c 3c 2c 
+ - Flush in suit c						 - Flush in suit c
+ - Straight flush at index 0				      <
+ - Straight flush at index 1					 - Straight flush at index 1
+ - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
+ - 5 cards used for hand: 5c 4c 3c 2c Ac 		      |	 - 5 cards used for hand: 6c 5c 4c 3c 2c 
+Comparison : 							Comparison : 
+--------------							--------------
+Tie							      |	Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+As Ks Qs Js 0s 							As Ks Qs Js 0s 
+ - Flush in suit s						 - Flush in suit s
+ - Straight flush at index 0					 - Straight flush at index 0
+ - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
+ - 5 cards used for hand: As Ks Qs Js 0s 			 - 5 cards used for hand: As Ks Qs Js 0s 
+Hand 2:								Hand 2:
+--------							--------
+As 5s 4s 3s 2s 							As 5s 4s 3s 2s 
+ - Flush in suit s						 - Flush in suit s
+ - Straight flush at index 0					 - Straight flush at index 0
+ - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH			 - evaluate_hand's ranking: STRAIGHT_FLUSH
+ - 5 cards used for hand: 5s 4s 3s 2s As 			 - 5 cards used for hand: 5s 4s 3s 2s As 
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
 Testcase 10: Trying each type of hand ranking
  Checking the output 
 Your file matched the expected output
