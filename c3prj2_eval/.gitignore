@@ -3,3 +3,4 @@ eval.o
 cards.o
 test-eval
 vg*
+test.txt
