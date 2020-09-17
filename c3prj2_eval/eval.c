@@ -2,46 +2,243 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <strings.h>
+unsigned * get_match_counts(deck_t * hand);
 
-int card_ptr_comp(const void * vp1, const void * vp2) {
-  return 0;
+int deck_contains(deck_t * d, card_t c);
+
+card_t card_from_letters(char value_let, char suit_let);
+
+void printhand(deck_t *hand){
+  for (int i=0;i<hand->n_cards;i++){
+    print_card(*hand->cards[i]);
+    printf(" ");
+  }
+  printf("\n");
 }
 
+int card_ptr_comp(const void * vp1, const void * vp2) {
+  const card_t * const * val1ptr =vp1; // convert back to int* so we can dereference
+  const card_t * const * val2ptr =vp2;
+  int value_diff= (**val2ptr).value - (**val1ptr).value;   // subtracting the two numbers compares them
+  if (value_diff==0){
+    suit_t suit1=(**val1ptr).suit;
+    suit_t suit2=(**val2ptr).suit;
+    return suit1 - suit2;
+  }else{
+    return value_diff;
+  }
+}
+
+
 suit_t flush_suit(deck_t * hand) {
-  return NUM_SUITS;
+  for (suit_t suit=0;suit < NUM_SUITS;suit++){ 
+   int n_suits=0;
+   for (int idx=0;idx<hand->n_cards;idx++){
+     if (hand->cards[idx]->suit==suit){//is unequal ->reset counter
+       n_suits++;
+       if (n_suits==5){
+	 return suit;
+       }
+     }
+   }
+ }
+ return NUM_SUITS;
 }
 
 unsigned get_largest_element(unsigned * arr, size_t n) {
-  return 0;
+  unsigned max=arr[0];
+  for (int i=1; i<n; i++){
+    if (arr[i]>max){
+      max=arr[i];
+    }
+  }   
+  return max;
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
-
-  return 0;
-}
-ssize_t  find_secondary_pair(deck_t * hand,
-			     unsigned * match_counts,
-			     size_t match_idx) {
+  for (size_t i=0;i<n;i++){
+    if (match_counts[i]==n_of_akind){
+      return i;
+    }
+    assert(i<=n);
+  }
   return -1;
 }
 
-int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+size_t  find_secondary_pair(deck_t * hand,
+			     unsigned * match_counts,
+			     size_t match_idx) {
+  // match_counts 1 1 2 2 3 3 3 for 0 9 7 7 6 6 6  and match_idx = 4 . The new match can only begin twhere the last match ended.
+  int i=0;
+  while (i<hand->n_cards){
+    if (i==match_idx){
+      i+=match_counts[i];
+    }
+    else{
+      if (match_counts[i]>=2){
+	return i;
+      }
+      i++;
+    }
+  }
+  return -1;
+}
+int init_n_vals(suit_t suit, suit_t fs){
+  if (fs==NUM_SUITS||fs==suit){
+    return 1;
+  }
+  else{
+    return 0;
+  }
+}
+
+int is_n_length_straight_at(deck_t * hand, size_t index, int n, suit_t fs){
+  //es muss abgefragt werden ob dieser Eintrag den Wert 5 hat
+  int n_vals=init_n_vals(hand->cards[index]->suit, fs);
+  unsigned lastvalue=hand->cards[index]->value;
+  for (int idx=index+1;idx<hand->n_cards;idx++){
+    if (hand->cards[idx]->value<lastvalue-1){//Descendent sorting If next value is less or equal, do 
+      n_vals=init_n_vals(hand->cards[index]->suit, fs);
+	//startidx=idx;
+      return 0;
+    }
+    else if (hand->cards[idx]->value==lastvalue-1)// there is still a chance...
+    {
+      if (fs==NUM_SUITS){//regular straight
+	  n_vals++;
+	  lastvalue--;
+      }
+      else{
+	  if (hand->cards[idx]->suit==fs){
+	    n_vals++;
+	    lastvalue--;
+	  }
+      }
+    }
+  if (n_vals==n){
+    return 1;
+  }
+  
+  }
   return 0;
 }
+
+int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
+  int isStraight=0;
+  // first check for straight
+  isStraight=is_n_length_straight_at(hand, index, 5, fs);
+    if (isStraight==1){
+      return 1;
+    }
+  isStraight=is_n_length_straight_at(hand, index, 4, fs);
+  if (isStraight==1){//If there is a lenght 4 straight an ACE_LOW_STRAIGHt is possible
+    if (hand->cards[index]->value==5){//if straight starts with 5
+      if (fs!=NUM_SUITS){// check for straight flush with desired card
+	char suit_l=suit_letter(*hand->cards[index]);
+	card_t desCard=card_from_letters('A', suit_l);
+	if(deck_contains(hand,desCard)>=1){
+	  return -1;
+	}
+      }
+      else{// Only need to check if first card is an ace
+        if (hand->cards[0]->value==VALUE_ACE){
+	return -1;
+	}
+      }
+    }
+  }
+  return 0;
+}
+
 
 hand_eval_t build_hand_from_match(deck_t * hand,
 				  unsigned n,
 				  hand_ranking_t what,
 				  size_t idx) {
-
   hand_eval_t ans;
+  ans.ranking=what;
+  for (int i=0;i<n;i++){
+    ans.cards[i]=hand->cards[i+idx];
+  }//Hand now hold n Values 0 - n-1
+  //will not be called for flush
+  //will not be called for straight
+  switch (what){
+  case  FOUR_OF_A_KIND: //important
+    if (idx>0){
+      ans.cards[4]=hand->cards[0];
+    }else{
+      ans.cards[4]=hand->cards[n];
+    }
+      break;
+  case  THREE_OF_A_KIND: //important
+    if (idx>0){
+      ans.cards[3]=hand->cards[0];
+    }else{
+      ans.cards[3]=hand->cards[n];
+    }
+    if (idx>1){
+      ans.cards[4]=hand->cards[1];
+    }else{
+      ans.cards[4]=hand->cards[idx+n+1];
+    }
+    break;
+  case  TWO_PAIR: //no action required
+    break;
+  case  PAIR: 
+    if (idx>0){
+      ans.cards[2]=hand->cards[0];
+    }else{
+      ans.cards[2]=hand->cards[n];
+    }
+    if (idx>1){
+      ans.cards[3]=hand->cards[1];
+    }else{
+      ans.cards[3]=hand->cards[idx+n+1];
+    }
+    if (idx>2){
+      ans.cards[4]=hand->cards[2];
+    }else{
+      ans.cards[4]=hand->cards[idx+n+2];
+    }
+    break;
+  case  NOTHING:
+    for (int i=0;i<5;i++){
+      ans.cards[i]=hand->cards[i];
+    }
+    break;
+  default:
+   break;
+  }
   return ans;
 }
 
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
-
-  return 0;
+  qsort(hand1->cards,hand1->n_cards,sizeof(hand1->cards[0]),card_ptr_comp);
+  qsort(hand2->cards,hand2->n_cards,sizeof(hand2->cards[0]),card_ptr_comp);
+  printhand(hand1);
+  hand_eval_t eval1=evaluate_hand(hand1);
+  hand_eval_t eval2=evaluate_hand(hand2);
+  if (eval1.ranking==eval2.ranking){
+  unsigned values1[5];
+  unsigned values2[5];
+  card_t tempcard1;
+  card_t tempcard2;
+  for (int i=0;i<5;i++){
+    tempcard1=*eval1.cards[i];
+    tempcard2=*eval2.cards[i];
+    values1[i]=tempcard1.value;
+    values2[i]=tempcard2.value;
+  }
+  //unsigned highcard1=get_largest_element(values1, 5);
+  //unsigned highcard2=get_largest_element(values2, 5);
+  // return highcard1-highcard2;
+  return bcmp(values1,values2,5);
+  }
+  else{
+    return eval2.ranking-eval1.ranking;
+  }
 }
 
 
@@ -51,7 +248,6 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
 //implementation in eval-c4.o) so that the
 //other functions we have provided can make
 //use of get_match_counts.
-unsigned * get_match_counts(deck_t * hand) ;
 
 // We provide the below functions.  You do NOT need to modify them
 // In fact, you should not modify them!
@@ -181,7 +377,7 @@ hand_eval_t evaluate_hand(deck_t * hand) {
     }
     return ans;
   }
-  else if (n_of_a_kind == 2) {
+  else if (n_of_a_kind == 2) {//pair
     return build_hand_from_match(hand, 2, PAIR, match_idx);
   }
   return build_hand_from_match(hand, 0, NOTHING, 0);
