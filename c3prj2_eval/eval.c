@@ -96,6 +96,7 @@ int init_n_vals(suit_t suit, suit_t fs){
 int is_n_length_straight_at(deck_t * hand, size_t index, int n, suit_t fs){
   //es muss abgefragt werden ob dieser Eintrag den Wert 5 hat
   int n_vals=init_n_vals(hand->cards[index]->suit, fs);
+  if (n_vals==0){return 0;}
   unsigned lastvalue=hand->cards[index]->value;
   for (int idx=index+1;idx<hand->n_cards;idx++){
     if (hand->cards[idx]->value<lastvalue-1){//Descendent sorting If next value is less or equal, do 
