@@ -221,20 +221,19 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
   hand_eval_t eval1=evaluate_hand(hand1);
   hand_eval_t eval2=evaluate_hand(hand2);
   if (eval1.ranking==eval2.ranking){
-  unsigned values1[5];
-  unsigned values2[5];
-  card_t tempcard1;
-  card_t tempcard2;
+  unsigned val1;
+  unsigned val2;
   for (int i=0;i<5;i++){
-    tempcard1=*eval1.cards[i];
-    tempcard2=*eval2.cards[i];
-    values1[i]=tempcard1.value;
-    values2[i]=tempcard2.value;
+    val1=eval1.cards[i]->value;
+    val2=eval2.cards[i]->value;
+    if (val1!=val2){
+      return val1-val2;
+    }
   }
   //unsigned highcard1=get_largest_element(values1, 5);
   //unsigned highcard2=get_largest_element(values2, 5);
   // return highcard1-highcard2;
-  return bcmp(values1,values2,5);
+  return 0;
   }
   else{
     return eval2.ranking-eval1.ranking;
