@@ -132,7 +132,7 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
     if (isStraight==1){
       return 1;
     }
-  for (int i=1;i<hand->n_cards-4;i++){
+  for (int i=1;i<=hand->n_cards-4;i++){
     isStraight=is_n_length_straight_at(hand, index+i, 4, fs);
     if (isStraight==1){//If there is a lenght 4 straight an ACE_LOW_STRAIGHt is possible
       if (hand->cards[index+i]->value==5){//if straight starts with 5
@@ -166,7 +166,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
   }//Hand now hold n Values 0 - n-1
   //will not be called for flush
   //will not be called for straight
-  switch (what){
+  /*switch (what){
   case  FOUR_OF_A_KIND: //important
     if (idx>0){
       ans.cards[4]=hand->cards[0];
@@ -175,7 +175,18 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     }
       break;
   case  THREE_OF_A_KIND: //important
-    if (idx>0){
+  */
+  if (what==FOUR_OF_A_KIND || what==THREE_OF_A_KIND || what==PAIR || what==NOTHING){
+  size_t search_idx=0;
+    for(int ii=n;ii<5;ii++){
+      if (search_idx==idx){
+	search_idx+=n;
+      }
+      ans.cards[ii]=hand->cards[search_idx];
+      search_idx++;
+    }
+  }
+    /*if (idx>0){
       ans.cards[3]=hand->cards[0];
     }else{
       ans.cards[3]=hand->cards[n];
@@ -204,7 +215,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     }else{
       ans.cards[4]=hand->cards[idx+n+2];
     }
-    break;
+    break;/
   case  NOTHING:
     for (int i=0;i<5;i++){
       ans.cards[i]=hand->cards[i];
@@ -212,7 +223,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     break;
   default:
    break;
-  }
+  }*/
   return ans;
 }
 
