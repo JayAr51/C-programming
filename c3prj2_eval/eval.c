@@ -137,14 +137,14 @@ int is_straight_at(deck_t * hand, size_t index, suit_t fs) {
     if (isStraight==1){//If there is a lenght 4 straight an ACE_LOW_STRAIGHt is possible
       if (hand->cards[index+i]->value==5){//if straight starts with 5
 	if (fs!=NUM_SUITS){// check for straight flush with desired card
-	  char suit_l=suit_letter(*hand->cards[index]);
-	  card_t desCard=card_from_letters('A', suit_l);
-	  if(deck_contains(hand,desCard)>=1){
+	  //char suit_l=suit_letter(*hand->cards[index]);
+	  //card_t desCard=card_from_letters('A', suit_l);
+	  if(hand->cards[index]->value==VALUE_ACE && hand->cards[index]->suit==fs){
 	    return -1;
 	  }
 	}
 	else{// Only need to check if first card is an ace
-	  if (hand->cards[0]->value==VALUE_ACE){
+	  if (hand->cards[index]->value==VALUE_ACE){
 	    return -1;
 	  }
 	}
