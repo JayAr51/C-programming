@@ -1,4 +1,4 @@
-Grading at Thu Sep 17 23:00:39 UTC 2020
+Grading at Fri Sep 18 08:02:19 UTC 2020
 Compiling your code
 rm -f test poker cards.o my-test-main.o *~
 cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
@@ -11,55 +11,55 @@ Your file matched the expected output
  - Testcase passed
 Testcase 2: Trying hands with pairs
 Valgrind returned an error status
-==2540== Memcheck, a memory error detector
-==2540== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==2540== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==2540== Command: ./test-eval inp.2.txt
-==2540== Parent PID: 2539
-==2540== 
-==2540== Invalid read of size 8
-==2540==    at 0x401D54: build_hand_from_match (eval.c:205)
-==2540==    by 0x4026F1: evaluate_hand (eval.c:383)
-==2540==    by 0x402AFB: describe_hand (test-eval.c:68)
-==2540==    by 0x402D46: main (test-eval.c:119)
-==2540==  Address 0x52092c0 is 0 bytes after a block of size 48 alloc'd
-==2540==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==2540==    by 0x401209: add_card_to (deck-c4.c:29)
-==2540==    by 0x4034A5: hand_from_string (input.c:49)
-==2540==    by 0x402CC0: main (test-eval.c:111)
-==2540== 
-==2540== Invalid read of size 8
-==2540==    at 0x400C12: print_hand (deck.c:12)
-==2540==    by 0x402B46: describe_hand (test-eval.c:74)
-==2540==    by 0x402D46: main (test-eval.c:119)
-==2540==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==2540== 
-==2540== 
-==2540== Process terminating with default action of signal 11 (SIGSEGV): dumping core
-==2540==  Access not within mapped region at address 0x0
-==2540==    at 0x400C12: print_hand (deck.c:12)
-==2540==    by 0x402B46: describe_hand (test-eval.c:74)
-==2540==    by 0x402D46: main (test-eval.c:119)
-==2540==  If you believe this happened as a result of a stack
-==2540==  overflow in your program's main thread (unlikely but
-==2540==  possible), you can try to increase the size of the
-==2540==  main thread stack using the --main-stacksize= flag.
-==2540==  The main thread stack size used in this run was 8388608.
-==2540== 
-==2540== HEAP SUMMARY:
-==2540==     in use at exit: 896 bytes in 18 blocks
-==2540==   total heap usage: 146 allocs, 128 frees, 11,444 bytes allocated
-==2540== 
-==2540== LEAK SUMMARY:
-==2540==    definitely lost: 0 bytes in 0 blocks
-==2540==    indirectly lost: 0 bytes in 0 blocks
-==2540==      possibly lost: 0 bytes in 0 blocks
-==2540==    still reachable: 896 bytes in 18 blocks
-==2540==         suppressed: 0 bytes in 0 blocks
-==2540== Rerun with --leak-check=full to see details of leaked memory
-==2540== 
-==2540== For counts of detected and suppressed errors, rerun with: -v
-==2540== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==173== Memcheck, a memory error detector
+==173== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==173== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==173== Command: ./test-eval inp.2.txt
+==173== Parent PID: 172
+==173== 
+==173== Invalid read of size 8
+==173==    at 0x401D4D: build_hand_from_match (eval.c:205)
+==173==    by 0x4026EA: evaluate_hand (eval.c:383)
+==173==    by 0x402AF4: describe_hand (test-eval.c:68)
+==173==    by 0x402D3F: main (test-eval.c:119)
+==173==  Address 0x52092c0 is 0 bytes after a block of size 48 alloc'd
+==173==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==173==    by 0x401209: add_card_to (deck-c4.c:29)
+==173==    by 0x40349E: hand_from_string (input.c:49)
+==173==    by 0x402CB9: main (test-eval.c:111)
+==173== 
+==173== Invalid read of size 8
+==173==    at 0x400C12: print_hand (deck.c:12)
+==173==    by 0x402B3F: describe_hand (test-eval.c:74)
+==173==    by 0x402D3F: main (test-eval.c:119)
+==173==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==173== 
+==173== 
+==173== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==173==  Access not within mapped region at address 0x0
+==173==    at 0x400C12: print_hand (deck.c:12)
+==173==    by 0x402B3F: describe_hand (test-eval.c:74)
+==173==    by 0x402D3F: main (test-eval.c:119)
+==173==  If you believe this happened as a result of a stack
+==173==  overflow in your program's main thread (unlikely but
+==173==  possible), you can try to increase the size of the
+==173==  main thread stack using the --main-stacksize= flag.
+==173==  The main thread stack size used in this run was 8388608.
+==173== 
+==173== HEAP SUMMARY:
+==173==     in use at exit: 896 bytes in 18 blocks
+==173==   total heap usage: 146 allocs, 128 frees, 11,444 bytes allocated
+==173== 
+==173== LEAK SUMMARY:
+==173==    definitely lost: 0 bytes in 0 blocks
+==173==    indirectly lost: 0 bytes in 0 blocks
+==173==      possibly lost: 0 bytes in 0 blocks
+==173==    still reachable: 896 bytes in 18 blocks
+==173==         suppressed: 0 bytes in 0 blocks
+==173== Rerun with --leak-check=full to see details of leaked memory
+==173== 
+==173== For counts of detected and suppressed errors, rerun with: -v
+==173== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 Testcase 3: Trying hands with 2 pairs
  Checking the output 
 Your file matched the expected output
@@ -225,13 +225,12 @@ Your file matched the expected output
  - Testcase passed
 Testcase 9: Trying hands with straight flushes
  Checking the output 
-Line_77_did_not_match
+Line_79_did_not_match
 Line_80_did_not_match
-Line_81_did_not_match
-Line_90_did_not_match
-Line_93_did_not_match
+Line_89_did_not_match
+Line_92_did_not_match
+Line_109_did_not_match
 Line_110_did_not_match
-Line_111_did_not_match
 Your file did not match the expected ouput
  - Output did not match, testcase failed
 Hand 1:								Hand 1:
@@ -310,7 +309,7 @@ Hand 1:								Hand 1:
 --------							--------
 Ah Kc 5h 4h 3h 2h 						Ah Kc 5h 4h 3h 2h 
  - Flush in suit h						 - Flush in suit h
- - Straight flush at index 0				      |	 - Straight at index 1
+ - Straight flush at index 0				      <
  - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
  - No secondary pair						 - No secondary pair
  - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
