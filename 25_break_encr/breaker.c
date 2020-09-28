@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define NLETTERS 26
-#define KEY 12
+#define KEY 13
 
 unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the maximum occuring array element
   if (n<=0){
