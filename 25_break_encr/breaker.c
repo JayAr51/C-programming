@@ -61,7 +61,7 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
       if (idx<26){
       letterCounts[idx]++;
       }else{
-	printf("%c",c);
+	printf("%c\n",c);
       }
     }
   }
@@ -84,7 +84,7 @@ int main(int argc, char ** argv) {
   unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
   if (*MaxIdx==0||MaxIdx==NULL){
     fprintf(stderr,"counting no aphabetic characters\n");
-    return EXIT_FAILURE;
+    return 0;//EXIT_FAILURE;
   }
   if (fclose(f) != 0) {// closeing the file and asking for errors
     perror("Failed to close the input file!");
