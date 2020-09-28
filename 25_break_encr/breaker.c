@@ -45,18 +45,14 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
   unsigned idx;
   unsigned counts=0;
   while ((c = fgetc(f)) != EOF&&counts<1000000) {
+    fprintf(stderr, "%c",c);
     if (isalpha(c)) {
       counts++;
       if (c>64&&c<91){
 	c+=32;
       }
-	/*if (n <= 70) { printf("%d\n", X); return 0; }
-
-      if (n >= 96 && n< 100) { printf("%d\n", X); return 0; }
-
-      if (n > 100) { printf("%d\n", X); return 0; }
-	*/ letterptr=strchr(alphabet, c);
-      //substract pointer values and devide by 8, then increase array with resulting index by 1
+      letterptr=strchr(alphabet, c);
+      //substract pointer values, then increase array with resulting index by 1
       idx=letterptr-alphabet;
       if (idx<26){
       letterCounts[idx]++;
@@ -85,7 +81,7 @@ int main(int argc, char ** argv) {
   if (*MaxIdx==0||MaxIdx==NULL){
     printf("%d\n",0);
     //fprintf(stderr,"counting no aphabetic characters\n");
-    return 0;//EXIT_FAILURE;
+    return EXIT_FAILURE;
   }
   if (fclose(f) != 0) {// closeing the file and asking for errors
     perror("Failed to close the input file!");
