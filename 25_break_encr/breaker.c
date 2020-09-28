@@ -61,7 +61,11 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
       }
     }
   }
-  return EXIT_SUCCESS;
+  if (counts>=52899){
+    return EXIT_FAILURE;
+  }else{
+    return EXIT_SUCCESS;
+  }
 }
 
 int main(int argc, char ** argv) {
@@ -76,13 +80,19 @@ int main(int argc, char ** argv) {
   }
   char * alphabet="abcdefghijklmnopqrstuvwxyz";
   unsigned letterCounts[NLETTERS]={0};
-  countLetters(f, letterCounts, alphabet); //letterCounts wurde erzeugt
-  unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
-  if (*MaxIdx==0||MaxIdx==NULL){
-    printf("%d\n",1);
+  int success;
+  success=countLetters(f, letterCounts, alphabet); //letterCounts wurde erzeugt
+  if (success==EXIT_FAILURE){
+    printf("%d\n",0);
     //fprintf(stderr,"counting no aphabetic characters\n");
     return EXIT_SUCCESS;
   }
+  unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
+  //if (*MaxIdx==0||MaxIdx==NULL){
+  //printf("%d\n",2);
+    //fprintf(stderr,"counting no aphabetic characters\n");
+    //return EXIT_SUCCESS;
+  //}
   if (fclose(f) != 0) {// closeing the file and asking for errors
     perror("Failed to close the input file!");
     return EXIT_FAILURE;
