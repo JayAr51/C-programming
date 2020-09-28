@@ -22,9 +22,9 @@ unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the
 	increased++;
       }
   }
-  //if (increased==0&&maxVal==0){
-  //fprintf(stderr,"No maximum could be found\n");
-  //}
+  if (increased==0&&maxVal==array[1]){
+    maxIdx=&array[n];//fprintf(stderr,"No maximum could be found\n");
+  }
   return maxIdx;
 }
 
@@ -88,11 +88,11 @@ int main(int argc, char ** argv) {
     return EXIT_SUCCESS;
   }
   unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
-  //if (*MaxIdx==0||MaxIdx==NULL){
-  //printf("%d\n",2);
+  if(MaxIdx-letterCounts==NLETTERS){
+      printf("%d\n",0);
     //fprintf(stderr,"counting no aphabetic characters\n");
-    //return EXIT_SUCCESS;
-  //}
+    return EXIT_SUCCESS;
+  }
   if (fclose(f) != 0) {// closeing the file and asking for errors
     perror("Failed to close the input file!");
     return EXIT_FAILURE;
