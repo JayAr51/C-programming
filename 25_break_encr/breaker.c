@@ -10,7 +10,7 @@ unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the
   return NULL;
   }
   unsigned maxVal=array[0];
-  unsigned *maxIdx=&array[0];
+  unsigned *maxIdx=array;
   int increased=0;
   if (n==1){
     return maxIdx;
@@ -48,7 +48,12 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
       if (c>64&&c<91){
 	c+=32;
       }
-      letterptr=strchr(alphabet, c);
+	/*if (n <= 70) { printf("%d\n", X); return 0; }
+
+      if (n >= 96 && n< 100) { printf("%d\n", X); return 0; }
+
+      if (n > 100) { printf("%d\n", X); return 0; }
+	*/ letterptr=strchr(alphabet, c);
       //substract pointer values and devide by 8, then increase array with resulting index by 1
       idx=letterptr-alphabet;
       if (idx<26){
