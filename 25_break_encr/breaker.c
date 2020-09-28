@@ -83,7 +83,7 @@ int main(int argc, char ** argv) {
   countLetters(f, letterCounts, alphabet); //letterCounts wurde erzeugt
   unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
   if (*MaxIdx==0||MaxIdx==NULL){
-    fprintf(stderr,"counting no aphabetic characters\n");
+    //fprintf(stderr,"counting no aphabetic characters\n");
     return 0;//EXIT_FAILURE;
   }
   if (fclose(f) != 0) {// closeing the file and asking for errors
