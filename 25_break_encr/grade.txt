@@ -1,6 +1,6 @@
-Grading at Mon Sep 28 19:57:47 UTC 2020
+Grading at Mon Sep 28 20:37:38 UTC 2020
 Attempting to compile breaker.c 
-gcc -o breaker -ggdb3 -pedantic -std=gnu99 breaker.c
+gcc -o breaker -ggdb3 -Werror -pedantic -std=gnu99 breaker.c
 testcase1 passed
 #################################################
 testcase2:
