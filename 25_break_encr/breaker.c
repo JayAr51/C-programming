@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define NLETTERS 26
-
+#define KEY 1
 unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the maximum occuring array element
   if (n<=0){
   return NULL;
@@ -83,13 +83,13 @@ int main(int argc, char ** argv) {
   int success;
   success=countLetters(f, letterCounts, alphabet); //letterCounts wurde erzeugt
   if (success==EXIT_FAILURE){
-    printf("%d\n",0);
+    printf("%d\n",KEY);
     //fprintf(stderr,"counting no aphabetic characters\n");
     return EXIT_SUCCESS;
   }
   unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
   if(MaxIdx-letterCounts==NLETTERS){
-      printf("%d\n",0);
+      printf("%d\n",KEY);
     //fprintf(stderr,"counting no aphabetic characters\n");
     return EXIT_SUCCESS;
   }
