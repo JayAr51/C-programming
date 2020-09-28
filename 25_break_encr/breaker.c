@@ -44,7 +44,7 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
   char * letterptr;
   unsigned idx;
   unsigned counts=0;
-  while ((c = fgetc(f)) != EOF&&counts<529000) {
+  while ((c = fgetc(f)) != EOF&&counts<1000000) {
     if (isalpha(c)) {
       counts++;
       if (c>64&&c<91){
