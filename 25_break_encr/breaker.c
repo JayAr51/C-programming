@@ -22,9 +22,9 @@ unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the
 	increased++;
       }
   }
-  if (increased==0&&maxVal==0){
-    fprintf(stderr,"No maximum could be found\n");
-  }
+  //if (increased==0&&maxVal==0){
+  //fprintf(stderr,"No maximum could be found\n");
+  //}
   return maxIdx;
 }
 
