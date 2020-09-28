@@ -45,9 +45,9 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
   char * letterptr;
   unsigned idx;
   unsigned counts=0;
-  while ((c = fgetc(f)) != EOF&&counts<529000) {
+  while ((c = fgetc(f)) != EOF)//&&counts<529000) {
     //fprintf(stderr, "%c",c);
-    if (isalpha(c)) {
+    {if (isalpha(c)) {
       counts++;
       if (c>64&&c<91){
 	c+=32;
@@ -64,11 +64,11 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
       }
     }
   }
-  if (counts>=52899){
-    return EXIT_FAILURE;
-  }else{
+  //if (counts>=52899){
+  //return EXIT_FAILURE;
+  //}else{
     return EXIT_SUCCESS;
-  }
+    //}
 }
 
 int main(int argc, char ** argv) {
