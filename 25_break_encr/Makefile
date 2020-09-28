@@ -1,2 +1,2 @@
-breaker: 
-	gcc -o breaker -ggdb3 -pedantic -std=gnu99 breaker.c
+breaker: breaker.c
+	gcc -o breaker -ggdb3 -Werror -pedantic -std=gnu99 breaker.c
