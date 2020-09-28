@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <string.h>
 
+#define NLETTERS 26
+
 unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the maximum occuring array element
   if (n<=0){
   return NULL;
@@ -43,6 +45,9 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
   unsigned idx;
   while ((c = fgetc(f)) != EOF) {
     if (isalpha(c)) {
+      if (c>64&&c<91){
+	c+=32;
+      }
       letterptr=strchr(alphabet, c);
       //substract pointer values and devide by 8, then increase array with resulting index by 1
       idx=letterptr-alphabet;
@@ -51,9 +56,7 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
       }else{
 	printf("%c",c);
       }
-      
     }
-    
   }
   return EXIT_SUCCESS;
 }
@@ -69,10 +72,9 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   char * alphabet="abcdefghijklmnopqrstuvwxyz";
-  unsigned nletters=26;
-  unsigned letterCounts[26]={0};
+  unsigned letterCounts[NLETTERS]={0};
   countLetters(f, letterCounts, alphabet); //letterCounts wurde erzeugt
-  unsigned *MaxIdx=arrayMax(letterCounts,nletters);
+  unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
   if (*MaxIdx==0||MaxIdx==NULL){
     fprintf(stderr,"counting no aphabetic characters\n");
     return EXIT_FAILURE;
