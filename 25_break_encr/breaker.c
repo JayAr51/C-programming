@@ -85,7 +85,7 @@ int main(int argc, char ** argv) {
   if (*MaxIdx==0||MaxIdx==NULL){
     printf("%d\n",0);
     //fprintf(stderr,"counting no aphabetic characters\n");
-    return EXIT_FAILURE;
+    return 0;//EXIT_FAILURE;
   }
   if (fclose(f) != 0) {// closeing the file and asking for errors
     perror("Failed to close the input file!");
