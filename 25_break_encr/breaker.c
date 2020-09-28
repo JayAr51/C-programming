@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define NLETTERS 26
-#define KEY 14
+#define KEY 0
 
 unsigned * arrayMax(unsigned * array, unsigned n){ // returns the pointer to the maximum occuring array element
   if (n<=0){
@@ -52,9 +52,11 @@ int countLetters(FILE * f, unsigned * letterCounts, char * alphabet) {
       if (c>64&&c<91){
 	c+=32;
       }
-      letterptr=strchr(alphabet, c);
+      //letterptr=strchr(alphabet, c);
+  
       //substract pointer values, then increase array with resulting index by 1
-      idx=letterptr-alphabet;
+      //idx=letterptr-alphabet;
+      idx=c-'a';
       if (idx<26){
       letterCounts[idx]++;
       }else{
