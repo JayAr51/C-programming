@@ -79,7 +79,7 @@ int main(int argc, char ** argv) {
   countLetters(f, letterCounts, alphabet); //letterCounts wurde erzeugt
   unsigned *MaxIdx=arrayMax(letterCounts,NLETTERS);
   if (*MaxIdx==0||MaxIdx==NULL){
-    printf("%d\n",0);
+    printf("%d\n",1);
     //fprintf(stderr,"counting no aphabetic characters\n");
     return EXIT_SUCCESS;
   }
