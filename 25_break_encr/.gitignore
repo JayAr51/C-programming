@@ -1,5 +1,5 @@
 *.txt
-*.c
+breaker
 encrypt
 encrypt.c
 Makefile2
