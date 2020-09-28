@@ -1,4 +1,6 @@
-*.txt
+key.txt
+encrypted.txt
+input.txt
 breaker
 encrypt
 encrypt.c
