@@ -20,7 +20,7 @@ for (int i=0;i<MATRIXSIZE;i++){
 }
 
 int main(int argc, char** argv){
-  if (argc<2||argc>3){
+  if (argc<2||argc>2){//3 if two arguments should be accepted
         fprintf(stderr,"usage gitrunner filename");
 	return EXIT_FAILURE;
     }
@@ -36,6 +36,10 @@ unsigned i=0;
 char matrix[MATRIXSIZE][MATRIXSIZE];
  while ( (c=fgetc(f)) != EOF ) {//reading in file
    isnewline=strchr("\n",c);
+    if(i>MATRIXSIZE-1){
+      fprintf(stderr,"column to long");
+      return EXIT_FAILURE;
+    }
    if (isnewline==NULL){//write and increase column index
     matrix[i][j]=c;
     j++;
@@ -55,12 +59,9 @@ char matrix[MATRIXSIZE][MATRIXSIZE];
     }
     j=0;
     i++;
-    if(i>MATRIXSIZE){
-      fprintf(stderr,"column to long");
-      return EXIT_FAILURE;
     }
-   }
 }
+ 
     if(i<MATRIXSIZE){
       fprintf(stderr,"column to short");
 	return EXIT_FAILURE;
