@@ -55,11 +55,11 @@ char matrix[MATRIXSIZE][MATRIXSIZE];
     }
     j=0;
     i++;
- }
-      if(i>MATRIXSIZE){
-	fprintf(stderr,"column to long");
-	return EXIT_FAILURE;
+    if(i>MATRIXSIZE){
+      fprintf(stderr,"column to long");
+      return EXIT_FAILURE;
     }
+   }
 }
     if(i<MATRIXSIZE){
       fprintf(stderr,"column to short");
