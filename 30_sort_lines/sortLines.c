@@ -77,8 +77,8 @@ int main(int argc, char ** argv) {
 	fprintf(stderr,"empty input?");
 	return EXIT_FAILURE;
       }
-      //int success=writeFile(data,"stdout");
-      int success=writeFile(data,"stderr");
+      int success=writeFile(data,"stdout");
+      //int success=writeFile(data,"stderr");
       if (success==EXIT_FAILURE){
       	fprintf(stderr,"problem writing file");
 	return EXIT_FAILURE;
@@ -97,8 +97,8 @@ int main(int argc, char ** argv) {
 	if (data.array==NULL){
 	  fprintf(stderr,"problem reading file %s",argv[i]);
 	}
-	//int success=writeFile(data,"stdout");
-	int success=writeFile(data,"stderr");
+	int success=writeFile(data,"stdout");
+	//int success=writeFile(data,"stderr");
 	if (success==EXIT_FAILURE){
 	  fprintf(stderr,"problem occurred in writeFile for %s",argv[i]);
 	  return EXIT_FAILURE;
