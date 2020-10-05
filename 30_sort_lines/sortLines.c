@@ -40,9 +40,10 @@ StringArray readInFile(FILE *f){
 
 int writeFile(StringArray data,char * filename){
   int success;
-  if (strcmp(filename,"stdout")){
+  if (strcmp(filename,"stdout")==0){
     for (size_t i = 0; i < data.numLines; i++) {
       success=fprintf(stdout,"%s",data.array[i]);
+      //success=printf("%s",data.array[i]);
       if (success==EXIT_FAILURE){
 	return success;
       }
@@ -64,11 +65,14 @@ int main(int argc, char ** argv) {
       StringArray data =readInFile(stdin);
       if (data.array==NULL){
 	fprintf(stderr,"empty input?");
+	return EXIT_FAILURE;
       }
       int success=writeFile(data,"stdout");
       if (success==EXIT_FAILURE){
       	fprintf(stderr,"problem writing file");
+	return EXIT_FAILURE;
       }
+      freeData(data);
   }
   else{
     for (int i=1;i<argc;i++){
@@ -84,7 +88,8 @@ int main(int argc, char ** argv) {
 	}
 	int success=writeFile(data,"stdout");
 	if (success==EXIT_FAILURE){
-	  fprintf(stderr,"problem writing file");
+	  fprintf(stderr,"problem occurred in writeFile for %s",argv[i]);
+	  return EXIT_FAILURE;
 	}
 	freeData(data);
 	if (fclose(f)==EOF){
