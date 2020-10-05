@@ -50,6 +50,16 @@ int writeFile(StringArray data,char * filename){
     }
     // free(data.numLines);
   }
+  else if (strcmp(filename,"stderr")==0){
+    for (size_t i = 0; i < data.numLines; i++) {
+      success=fprintf(stderr,"%s",data.array[i]);
+      //success=printf("%s",data.array[i]);
+      if (success==EXIT_FAILURE){
+	return success;
+      }
+    }
+    // free(data.numLines);
+  }
   return EXIT_SUCCESS;
 }
 
@@ -67,7 +77,8 @@ int main(int argc, char ** argv) {
 	fprintf(stderr,"empty input?");
 	return EXIT_FAILURE;
       }
-      int success=writeFile(data,"stdout");
+      //int success=writeFile(data,"stdout");
+      int success=writeFile(data,"stderr");
       if (success==EXIT_FAILURE){
       	fprintf(stderr,"problem writing file");
 	return EXIT_FAILURE;
@@ -86,7 +97,8 @@ int main(int argc, char ** argv) {
 	if (data.array==NULL){
 	  fprintf(stderr,"problem reading file %s",argv[i]);
 	}
-	int success=writeFile(data,"stdout");
+	//int success=writeFile(data,"stdout");
+	int success=writeFile(data,"stderr");
 	if (success==EXIT_FAILURE){
 	  fprintf(stderr,"problem occurred in writeFile for %s",argv[i]);
 	  return EXIT_FAILURE;
