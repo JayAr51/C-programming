@@ -41,9 +41,23 @@ void addRandomMine(board_t * b) {
 }
 
 board_t * makeBoard(int w, int h, int numMines) {
-  //WRITE ME!
-  return NULL;
+  board_t * b=malloc(sizeof(board_t));
+  b->width=w;
+  b->height=h;
+  b->totalMines=numMines;
+  b->board=malloc(b->height*sizeof(b->board));
+  for (int i=0; i<b->height; i++){
+    b->board[i]=malloc(b->width*sizeof(b->board));
+    for (int j=0; j<b->width; j++){
+      b->board[i][j]=UNKNOWN;
+    }
+  }
+  for (int i=0; i<numMines; i++){
+  addRandomMine(b);
+  }
+  return b;
 }
+
 void printBoard(board_t * b) {    
   int found = 0;
   printf("    ");
@@ -94,10 +108,38 @@ void printBoard(board_t * b) {
   }
   printf("\nFound %d of %d mines\n", found, b->totalMines);
 }
-int countMines(board_t * b, int x, int y) {
-  //WRITE ME!
-  return 0;
+
+int intmax(int x, int y){
+  if (x>y){
+    return x;
+  }else{
+    return y;
+  }
 }
+
+int intmin(int x, int y){
+  if (x<y){
+    return x;
+  }else{
+    return y;
+  }
+}
+  
+int countMines(board_t * b, int x, int y) {
+  int mineCount=0;
+  for (int i=intmax(0,y-1); i<intmin(b->height,y+2); i++){
+    for (int j=intmax(0,x-1); j<intmin(b->width,x+2); j++){
+      if (i==y &&j==x){}
+      else{
+	if (IS_MINE(b->board[i][j])){
+	  mineCount++;
+	}
+      }
+    }
+  }
+  return mineCount;
+}
+
 int click (board_t * b, int x, int y) {
   if (x < 0 || x >= b->width ||
       y < 0 || y >= b->height) {
@@ -118,12 +160,23 @@ int click (board_t * b, int x, int y) {
 }
 
 int checkWin(board_t * b) {
-  //WRITE ME!
-  return 0;
+  int unknCount=0;
+  for (int i=0; i<b->height; i++){
+    for (int j=0; j<b->width; j++){
+      if (b->board[i][j]==UNKNOWN){
+	unknCount++;
+      }
+    }
+  }
+  return unknCount==0;
 }
 
 void freeBoard(board_t * b) {
-  //WRITE ME!
+  for (int i=0; i<b->height; i++){
+    free(b->board[i]);
+  }
+  free(b->board);
+  free(b);
 }
 
 int readInt(char ** linep, size_t * lineszp) {
@@ -196,6 +249,7 @@ int maybeReveal(board_t * b, int x, int y) {
     }
   }
   assert(knownMines + unknownSquares >= b->board[y][x]);
+  //printf("knownMines equals: %d, board entry at location: %d\n",knownMines,b->board[y][x]);
   assert(knownMines <= b->board[y][x]);
   if (unknownSquares > 0) {
     int revealMines = (knownMines + unknownSquares == 
@@ -236,9 +290,9 @@ int playTurn(board_t * b, char ** linep, size_t *lineszp) {
   printf("Current board:\n");
   printBoard(b);
   printf("x coordinate:\n");
-  int x = readInt(linep, lineszp);
+  int x =readInt(linep, lineszp);
   printf("y coordinate:\n");
-  int y = readInt(linep, lineszp);
+  int y =readInt(linep, lineszp);
   int result = click(b,x,y);
   determineKnownMines(b);
   if (result == CLICK_LOSE) {
