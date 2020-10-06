@@ -28,7 +28,7 @@ int readInFile(FILE *f){
       ssize_t len=0;
       char ** array = NULL;
       size_t n = 0;
-      while((len=getline(&line, &sz, f)) >= 0){
+      while((len=getline(&line, &sz, f)) > 0){
 	n++;
 	array=realloc(array, n * sizeof(*array));
 	//array[n-1]=NULL;
