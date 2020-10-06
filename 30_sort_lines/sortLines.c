@@ -67,7 +67,7 @@ int main(int argc, char ** argv) {
       FILE *f=fopen(argv[i],"r");
       if (f==NULL){
 	fprintf(stderr,"file %s was not found",argv[i]);
-	  //return EXIT_FAILURE;
+	  return EXIT_FAILURE;
       }
       else{
 	success=readInFile(f);
