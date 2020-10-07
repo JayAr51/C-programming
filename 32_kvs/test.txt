@@ -1,5 +1,7 @@
 apple=red
 banana=yellow
+pair
+
 orange=orange
 grapes=purple
 carrot=orange
