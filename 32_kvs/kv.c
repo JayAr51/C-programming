@@ -17,8 +17,8 @@ int  writeKVPairToArray(kvpair_t * kvp, char * input, ssize_t len, char seperato
     fprintf(stderr,"value can be found found");
     return EXIT_FAILURE;
   }
-  kvp->key=malloc((idx+1)*sizeof(kvp->key));
-  kvp->value=malloc((len-1-idx)*sizeof(kvp->value));
+  kvp->key=malloc((idx+1)*sizeof(char));//kvp->key));
+  kvp->value=malloc((len-1-idx)*sizeof(char));//kvp->value));
   for (int i=0;i<idx;i++){
     kvp->key[i]=input[i];
   }
@@ -56,7 +56,7 @@ kvarray_t * readKVs(const char * fname) {
       }
       free(line);
       if (fclose(f)!=0){
-	fprintf(stderr,"could not close file %s",fname);
+	fprintf(stderr,"could not close file %s\n",fname);
       }
       if ( kvArr->entries==0){
 	return NULL;
