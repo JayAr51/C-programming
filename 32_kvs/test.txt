@@ -1,6 +1,7 @@
 apple=red
 banana=yellow
-pair
+pair=
+chicken
 
 orange=orange
 grapes=purple
