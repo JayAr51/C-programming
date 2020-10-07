@@ -1,13 +1,17 @@
-Grading at Wed Oct  7 19:22:56 UTC 2020
+Grading at Wed Oct  7 20:45:47 UTC 2020
 Attempting to compile:
 #################################################
 testcase1:
-valgrind reported memory errors
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase2:
-valgrind reported memory errors
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase3:
 valgrind reported memory errors
 
-Overall Grade: F
+Overall Grade: C
