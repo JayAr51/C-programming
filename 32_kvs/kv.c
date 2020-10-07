@@ -6,19 +6,21 @@
 int  writeKVPairToArray(kvpair_t * kvp, char * input, ssize_t len, char seperator){
   char * lePtr;
   unsigned idx;
+  kvp->key= NULL;
+  kvp->value= NULL;
   int sep=(int)seperator;
   lePtr=strchr(input, sep);
   if (lePtr==NULL){
-    fprintf(stderr,"no seperator %c can be found",sep);
+    fprintf(stderr,"no seperator %c can be found\n",sep);
     return EXIT_FAILURE;
   }
   idx=lePtr-input;
   if (idx>=len-1){
-    fprintf(stderr,"value can be found found");
+    fprintf(stderr,"no value can be found\n");
     return EXIT_FAILURE;
   }
-  kvp->key=malloc((idx+1)*sizeof(char));//kvp->key));
-  kvp->value=malloc((len-1-idx)*sizeof(char));//kvp->value));
+  kvp->key=calloc((size_t) idx+1, sizeof(char));//kvp->key));
+  kvp->value=calloc((size_t) (len-1-idx),sizeof(char));//kvp->value));
   for (int i=0;i<idx;i++){
     kvp->key[i]=input[i];
   }
@@ -27,7 +29,7 @@ int  writeKVPairToArray(kvpair_t * kvp, char * input, ssize_t len, char seperato
     kvp->value[i-idx-1]=input[i];
   }
   return EXIT_SUCCESS;
-}
+  }
 
 	
 kvarray_t * readKVs(const char * fname) {
