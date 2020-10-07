@@ -17,6 +17,8 @@ typedef struct _kvarray_t kvarray_t;
 
 kvarray_t * readKVs(const char * fname);
 
+void freeKVEntry(kvarray_t * pairs,int i);
+
 void freeKVs(kvarray_t * pairs);
 
 void printKVs(kvarray_t * pairs);
