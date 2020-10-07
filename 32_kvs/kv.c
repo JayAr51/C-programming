@@ -60,9 +60,9 @@ kvarray_t * readKVs(const char * fname) {
       if (fclose(f)!=0){
 	fprintf(stderr,"could not close file %s\n",fname);
       }
-      if ( kvArr->entries==0){
-	return NULL;
-      }
+      //   if ( kvArr->entries==0){
+      //return NULL;
+      //}
       return kvArr;
 }
 
