@@ -5,7 +5,7 @@
 struct _kvpair_t { 
   char * key; //DEFINE ME!
   char * value;
-  };
+i  };
 typedef struct _kvpair_t kvpair_t;
 
 struct _kvarray_t { 
