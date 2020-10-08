@@ -10,7 +10,7 @@ $(PROGRAM): $(OBJS)
 	gcc -c $(CFLAGS) $<
 
 clean:
-	rm -f $(OBJS) $(PROGRAM) *~
+	rm -f $(OBJS) $(PROGRAM) *~ *.count
 
 counts.o: counts.h
 outname.o: outname.h
