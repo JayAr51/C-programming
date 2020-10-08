@@ -43,17 +43,27 @@ counts_t * countFile(const char * filename, kvarray_t * kv) {
     fprintf(stderr,"could not open file %s",filename);
     return NULL; //Could not open file->indicate failure
   }
+  char * idxP=NULL;
+  int idx=0;
   char * line= NULL;
   char * key= NULL;
   size_t sz =0;
   ssize_t len=0;
   char * value=NULL;
   while((len=getline(&line, &sz, f)) > 0){
-    key=calloc((len),sizeof(char));
-    key=strncpy(key,line,(len-1));
-    key[len]=(char)0;
+    idxP=strchr(line, '\n');
+      if (idxP==NULL){
+	key=calloc((len),sizeof(char));
+	key=strcpy(key,line);
+      }else{
+	idx=idxP-line;
+	key=calloc((idx+1),sizeof(char));
+	key=strncpy(key,line,(idx));
+	key[idx]='\0';
+      }
     value = getValueFromKV(value,kv,key);
     addCount(c, value);
+    free(key);
   }
   free(line);
   free(value);
