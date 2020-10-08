@@ -72,7 +72,7 @@ counts_t * countFile(const char * filename, kvarray_t * kv) {
 
 int main(int argc, char ** argv) {
   if (argc<3){
-    fprintf(stderr, "useage ./a keyvaluepairs file2count1 file2count2");
+    fprintf(stderr, "useage ./a keyvaluepairs file2count1 file2count2 ...\n");
     return EXIT_FAILURE;
   }
   //WRITE ME (plus add appropriate error checking!)
