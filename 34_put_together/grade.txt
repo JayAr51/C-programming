@@ -1,6 +1,6 @@
-Grading at Thu Oct  8 20:13:59 UTC 2020
+Grading at Thu Oct  8 20:37:24 UTC 2020
 Attempting to compile:
-rm -f  outname.o  counts.o  main.o  kv.o count_values *~
+rm -f  outname.o  counts.o  main.o  kv.o count_values *~ *.count
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 counts.c
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 main.c
