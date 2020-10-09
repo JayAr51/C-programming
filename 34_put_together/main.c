@@ -6,7 +6,7 @@
 #include "outname.h"
 
 char * makeCountFileName(const char * cName) {
-  const char * suffix = ".count";
+  const char * suffix = ".counts";
   unsigned len = strlen(cName) + strlen(suffix) + 1;
   char * ans = malloc(len * sizeof(*ans));
   snprintf(ans, len, "%s%s", cName, suffix);
