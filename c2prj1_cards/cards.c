@@ -10,6 +10,15 @@ void assert_card_valid(card_t c) {/*card_t is a struct defined by a value and a 
   assert(c.suit>=SPADES&&c.suit<=CLUBS);
 }
 
+int is_card_valid(card_t c) {/*card_t is a struct defined by a value and a suit */
+  //returns EXITS_SUCCESS if valid, else EXIT_FAILURE 
+  if ((c.value>=2&&c.value<=VALUE_ACE)&&(c.suit>=SPADES&&c.suit<=CLUBS)){
+    return EXIT_SUCCESS;
+  }else{
+    return EXIT_FAILURE;
+  }
+}
+
 const char * ranking_to_string(hand_ranking_t r) {
   switch(r){
   case STRAIGHT_FLUSH: return "STRAIGHT_FLUSH"; break;
