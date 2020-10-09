@@ -1,10 +1,5 @@
-Grading at Fri Oct  9 12:10:06 UTC 2020
+Grading at Fri Oct  9 12:13:59 UTC 2020
 Compiling deck.c -> deck.o
-deck.c: In function ‘add_card_to’:
-deck.c:20:15: error: ‘n_cards’ undeclared (first use in this function)
-   deck->cards[n_cards]=malloc(sizeof(card_t));
-               ^
-deck.c:20:15: note: each undeclared identifier is reported only once for each function it appears in
 deck.c: In function ‘make_deck_exclude’:
 deck.c:29:14: error: implicit declaration of function ‘initDeck’ [-Werror=implicit-function-declaration]
    deck_t * d=initDeck();
@@ -31,6 +26,7 @@ deck.c: In function ‘add_empty_card’:
 deck.c:68:15: error: ‘n_cards’ undeclared (first use in this function)
    deck->cards[n_cards]=malloc(sizeof(card_t));
                ^
+deck.c:68:15: note: each undeclared identifier is reported only once for each function it appears in
 deck.c: In function ‘deck_contains’:
 deck.c:93:21: error: invalid type argument of ‘->’ (have ‘deck_t {aka struct deck_tag}’)
      if (card2num(str->cards[i])==card2num(c)){
