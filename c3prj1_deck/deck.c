@@ -5,6 +5,7 @@
 void print_card(card_t);
 char suit_letter(card_t);
 char value_letter(card_t);
+deck_t * initDeck(void);
 
 void free_deck(deck_t * deck){
   for (int i; i<deck->n_cards; i++){
