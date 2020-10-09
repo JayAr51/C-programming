@@ -1,0 +1,45 @@
+Grading at Fri Oct  9 12:10:06 UTC 2020
+Compiling deck.c -> deck.o
+deck.c: In function ‘add_card_to’:
+deck.c:20:15: error: ‘n_cards’ undeclared (first use in this function)
+   deck->cards[n_cards]=malloc(sizeof(card_t));
+               ^
+deck.c:20:15: note: each undeclared identifier is reported only once for each function it appears in
+deck.c: In function ‘make_deck_exclude’:
+deck.c:29:14: error: implicit declaration of function ‘initDeck’ [-Werror=implicit-function-declaration]
+   deck_t * d=initDeck();
+              ^
+deck.c:29:14: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
+deck.c: At top level:
+deck.c:43:10: error: conflicting types for ‘initDeck’
+ deck_t * initDeck(void){
+          ^
+deck.c:29:14: note: previous implicit declaration of ‘initDeck’ was here
+   deck_t * d=initDeck();
+              ^
+deck.c: In function ‘build_remaining_deck’:
+deck.c:55:11: error: implicit declaration of function ‘is_card_valid’ [-Werror=implicit-function-declaration]
+       if (is_card_valid(hands[i]->cards[j])==EXIT_SUCCESS){
+           ^
+deck.c:56:26: error: incompatible type for argument 2 of ‘add_card_to’
+  add_card_to(hand_cards, hands[i]->cards[j]);
+                          ^
+deck.c:18:6: note: expected ‘card_t {aka struct card_tag}’ but argument is of type ‘card_t * {aka struct card_tag *}’
+ void add_card_to(deck_t * deck, card_t c){
+      ^
+deck.c: In function ‘add_empty_card’:
+deck.c:68:15: error: ‘n_cards’ undeclared (first use in this function)
+   deck->cards[n_cards]=malloc(sizeof(card_t));
+               ^
+deck.c: In function ‘deck_contains’:
+deck.c:93:21: error: invalid type argument of ‘->’ (have ‘deck_t {aka struct deck_tag}’)
+     if (card2num(str->cards[i])==card2num(c)){
+                     ^
+deck.c: In function ‘add_empty_card’:
+deck.c:73:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1: all warnings being treated as errors
+Compilation of deck.c failed
+
+Overall Grade: F
