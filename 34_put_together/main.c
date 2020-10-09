@@ -14,14 +14,14 @@ char * makeCountFileName(const char * cName) {
 }
 
 
-char * getValueFromKV(char * ptr,kvarray_t * c,char * key){
-  char *value=ptr;
+char * getValueFromKV(kvarray_t * c,char * key){
   int counted=0;
   int i=0;
+  char * value=NULL;
   //look for match in array of kv structs and increment if found
     while (i<c->entries && counted==0){
       if (strcmp(key,c->kv[i]->key)==0){
-	value=realloc(value,strlen(c->kv[i]->value)*sizeof(char));
+	value=calloc((strlen(c->kv[i]->value)+1),sizeof(char));
 	value=strcpy(value,c->kv[i]->value);
 	counted++;
       }
@@ -49,7 +49,6 @@ counts_t * countFile(const char * filename, kvarray_t * kv) {
   char * key= NULL;
   size_t sz =0;
   ssize_t len=0;
-  char * value=NULL;
   while((len=getline(&line, &sz, f)) > 0){
     idxP=strchr(line, '\n');
       if (idxP==NULL){
@@ -61,12 +60,16 @@ counts_t * countFile(const char * filename, kvarray_t * kv) {
 	key=strncpy(key,line,(idx));
 	key[idx]='\0';
       }
-    value = getValueFromKV(value,kv,key);
+    char * value = getValueFromKV(kv,key);
     addCount(c, value);
     free(key);
+    free(value);
   }
   free(line);
-  free(value);
+  if (fclose(f)!=0){
+    fprintf(stderr,"could not close file %s\n",filename);
+  }
+
   return c;
 }
 
