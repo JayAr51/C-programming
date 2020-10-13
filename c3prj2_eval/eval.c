@@ -8,7 +8,7 @@ int deck_contains(deck_t * d, card_t c);
 unsigned * get_match_counts(deck_t * hand){
   unsigned * match_counts=calloc(hand->n_cards, sizeof(match_counts));
   // match_counts 1 1 2 2 3 3 3 for 0 9 7 7 6 6 6  and match_idx = 4 . The new match can only begin twhere the last match ended.
-  for (int i; i<hand->n_cards; i++){
+  for (int i=0; i<hand->n_cards; i++){
     match_counts[i]=deck_contains(hand,*hand->cards[i]);
   }
   return match_counts;
