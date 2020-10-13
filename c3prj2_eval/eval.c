@@ -4,12 +4,24 @@
 #include <assert.h>
 #include <strings.h>
 int deck_contains(deck_t * d, card_t c);
+int is_card_valid(card_t c);
 
 unsigned * get_match_counts(deck_t * hand){
   unsigned * match_counts=calloc(hand->n_cards, sizeof(match_counts));
   // match_counts 1 1 2 2 3 3 3 for 0 9 7 7 6 6 6  and match_idx = 4 . The new match can only begin twhere the last match ended.
+  card_t temp_card;
   for (int i=0; i<hand->n_cards; i++){
-    match_counts[i]=deck_contains(hand,*hand->cards[i]);
+    temp_card=*hand->cards[i];
+    if (is_card_valid(temp_card)==EXIT_SUCCESS){
+      match_counts[i]=0;
+      for (unsigned j=0; j<NUM_SUITS; j++){
+	temp_card.suit=j;
+	match_counts[i]+=deck_contains(hand,temp_card);
+      }
+    }
+    else{
+      match_counts[i]=1;
+    }
   }
   return match_counts;
 }
