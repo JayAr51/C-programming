@@ -7,7 +7,7 @@
 
 void assert_card_valid(card_t c) {/*card_t is a struct defined by a value and a suit */
   assert(c.value>=2&&c.value<=VALUE_ACE);
-  assert(c.suit>=SPADES&&c.suit<=CLUBS);
+  assert(c.suit>=SPADES&&c.suit<=NUM_SUITS);
 }
 
 int is_card_valid(card_t c) {/*card_t is a struct defined by a value and a suit */
@@ -60,7 +60,7 @@ char suit_letter(card_t c) {
     case HEARTS: suit='h'; break;
     case DIAMONDS: suit='d'; break;
     case CLUBS: suit='c'; break;
-    default: suit=' '; break;
+    default: suit='?'; break;
     }
   return suit;
 }
@@ -108,9 +108,11 @@ card_t card_from_letters(char value_let, char suit_let) {
     case 'h': temp.suit=HEARTS; break;
     case 'd': temp.suit=DIAMONDS; break;
     case 'c': temp.suit=CLUBS; break;
-    default: printf("fail in cards from letters"); break;
+    default: //printf("fail in cards from letters");
+      temp.suit=NUM_SUITS;
+      break;
     }
-  assert_card_valid(temp);
+    //assert_card_valid(temp);
   return temp;
 }
 
