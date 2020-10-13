@@ -1,29 +1,240 @@
-Grading at Fri Oct  9 12:16:18 UTC 2020
+Grading at Tue Oct 13 15:35:06 UTC 2020
 Compiling deck.c -> deck.o
-deck.c: In function ‘build_remaining_deck’:
-deck.c:56:11: error: implicit declaration of function ‘is_card_valid’ [-Werror=implicit-function-declaration]
-       if (is_card_valid(hands[i]->cards[j])==EXIT_SUCCESS){
-           ^
-deck.c:57:26: error: incompatible type for argument 2 of ‘add_card_to’
-  add_card_to(hand_cards, hands[i]->cards[j]);
-                          ^
-deck.c:19:6: note: expected ‘card_t {aka struct card_tag}’ but argument is of type ‘card_t * {aka struct card_tag *}’
- void add_card_to(deck_t * deck, card_t c){
-      ^
-deck.c: In function ‘add_empty_card’:
-deck.c:69:15: error: ‘n_cards’ undeclared (first use in this function)
-   deck->cards[n_cards]=malloc(sizeof(card_t));
-               ^
-deck.c:69:15: note: each undeclared identifier is reported only once for each function it appears in
-deck.c: In function ‘deck_contains’:
-deck.c:94:21: error: invalid type argument of ‘->’ (have ‘deck_t {aka struct deck_tag}’)
-     if (card2num(str->cards[i])==card2num(c)){
-                     ^
-deck.c: In function ‘add_empty_card’:
-deck.c:74:1: error: control reaches end of non-void function [-Werror=return-type]
- }
- ^
-cc1: all warnings being treated as errors
-Compilation of deck.c failed
+Compiling eval.c -> eval.o
+Compiling cards.c -> cards.o
+Linking eval.o, deck.o, cards.o, and our tester
+Testing free_deck(deck_t *)
+- Test passed
+Testing add_card_to(deck_t *, card_t)
+- Test passed
+Testing add_empty_card(deck_t *)
+- Test passed
+Testing make_deck_exclude(deck_t *)
+- Test passed
+Testing build_remaining_deck(deck_t **, size_t)
+Testing with 1 hand
+Testing with 2 hands
+Testing with 3 hands
+Testing with 4 hands
+Testing with 5 hands
+Testing with 6 hands
+- Test passed
+Testing get_match_count(deck_t *)
+In this hand: Ac Ah 
+  I expected the 0'th match count to be 2 but you got 1
+  I expected the 1'th match count to be 2 but you got 1
+In this hand: Ac Ah Kc 
+  I expected the 0'th match count to be 2 but you got 1
+  I expected the 1'th match count to be 2 but you got 1
+In this hand: Ac Ah Kc Qs 
+  I expected the 0'th match count to be 2 but you got 1
+  I expected the 1'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Qs 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+In this hand: Ac Ad Ah Kc Kd Qs 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 2 but you got 1
+  I expected the 4'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Qh Qs 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 2 but you got 1
+  I expected the 4'th match count to be 2 but you got 1
+  I expected the 5'th match count to be 2 but you got 1
+  I expected the 6'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Qh Qs 0s 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 2 but you got 1
+  I expected the 4'th match count to be 2 but you got 1
+  I expected the 5'th match count to be 2 but you got 1
+  I expected the 6'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Qh Qs 0s 9c 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 2 but you got 1
+  I expected the 4'th match count to be 2 but you got 1
+  I expected the 5'th match count to be 2 but you got 1
+  I expected the 6'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Qd Qh Qs 0s 9c 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 2 but you got 1
+  I expected the 4'th match count to be 2 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0s 9c 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 3 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 3 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 2 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 3 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 2 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7s 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 3 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 2 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7s 6h 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 3 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 2 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7h 7s 6h 
+  I expected the 0'th match count to be 3 but you got 1
+  I expected the 1'th match count to be 3 but you got 1
+  I expected the 2'th match count to be 3 but you got 1
+  I expected the 3'th match count to be 3 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 2 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 2 but you got 1
+  I expected the 13'th match count to be 2 but you got 1
+  I expected the 14'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7h 7s 6h 
+  I expected the 0'th match count to be 4 but you got 1
+  I expected the 1'th match count to be 4 but you got 1
+  I expected the 2'th match count to be 4 but you got 1
+  I expected the 3'th match count to be 4 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 3 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 2 but you got 1
+  I expected the 13'th match count to be 2 but you got 1
+  I expected the 14'th match count to be 2 but you got 1
+  I expected the 15'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 7h 7s 6h 4d 
+  I expected the 0'th match count to be 4 but you got 1
+  I expected the 1'th match count to be 4 but you got 1
+  I expected the 2'th match count to be 4 but you got 1
+  I expected the 3'th match count to be 4 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 3 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 2 but you got 1
+  I expected the 13'th match count to be 2 but you got 1
+  I expected the 14'th match count to be 2 but you got 1
+  I expected the 15'th match count to be 2 but you got 1
+In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 9s 7h 7s 6h 4d 
+  I expected the 0'th match count to be 4 but you got 1
+  I expected the 1'th match count to be 4 but you got 1
+  I expected the 2'th match count to be 4 but you got 1
+  I expected the 3'th match count to be 4 but you got 1
+  I expected the 4'th match count to be 3 but you got 1
+  I expected the 5'th match count to be 3 but you got 1
+  I expected the 6'th match count to be 3 but you got 1
+  I expected the 7'th match count to be 3 but you got 1
+  I expected the 8'th match count to be 3 but you got 1
+  I expected the 9'th match count to be 3 but you got 1
+  I expected the 10'th match count to be 2 but you got 1
+  I expected the 11'th match count to be 2 but you got 1
+  I expected the 12'th match count to be 3 but you got 1
+  I expected the 13'th match count to be 3 but you got 1
+  I expected the 14'th match count to be 3 but you got 1
+  I expected the 15'th match count to be 2 but you got 1
+  I expected the 16'th match count to be 2 but you got 1
+Valgrind reported errors:
+==527== Memcheck, a memory error detector
+==527== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==527== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==527== Command: ./tester gmc
+==527== Parent PID: 526
+==527== 
+==527== Conditional jump or move depends on uninitialised value(s)
+==527==    at 0x400C60: get_match_counts (in /graderhome/work/c4prj1_deck/tester)
+==527==    by 0x403099: check_get_match_count (in /graderhome/work/c4prj1_deck/tester)
+==527==    by 0x400A78: main (in /graderhome/work/c4prj1_deck/tester)
+==527== 
+==527== Use of uninitialised value of size 8
+==527==    at 0x400C37: get_match_counts (in /graderhome/work/c4prj1_deck/tester)
+==527==    by 0x403099: check_get_match_count (in /graderhome/work/c4prj1_deck/tester)
+==527==    by 0x400A78: main (in /graderhome/work/c4prj1_deck/tester)
+==527== 
+==527== Use of uninitialised value of size 8
+==527==    at 0x400C49: get_match_counts (in /graderhome/work/c4prj1_deck/tester)
+==527==    by 0x403099: check_get_match_count (in /graderhome/work/c4prj1_deck/tester)
+==527==    by 0x400A78: main (in /graderhome/work/c4prj1_deck/tester)
+==527== 
+==527== 
+==527== HEAP SUMMARY:
+==527==     in use at exit: 0 bytes in 0 blocks
+==527==   total heap usage: 117 allocs, 117 frees, 9,752 bytes allocated
+==527== 
+==527== All heap blocks were freed -- no leaks are possible
+==527== 
+==527== For counts of detected and suppressed errors, rerun with: -v
+==527== Use --track-origins=yes to see where uninitialised values come from
+==527== ERROR SUMMARY: 589 errors from 3 contexts (suppressed: 0 from 0)
 
-Overall Grade: F
+Overall Grade: B
