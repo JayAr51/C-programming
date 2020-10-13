@@ -1,4 +1,4 @@
-Grading at Tue Oct 13 15:35:06 UTC 2020
+Grading at Tue Oct 13 15:56:59 UTC 2020
 Compiling deck.c -> deck.o
 Compiling eval.c -> eval.o
 Compiling cards.c -> cards.o
@@ -204,37 +204,6 @@ In this hand: Ac Ad Ah As Kc Kd Ks Qd Qh Qs 0d 0s 9c 9h 9s 7h 7s 6h 4d
   I expected the 14'th match count to be 3 but you got 1
   I expected the 15'th match count to be 2 but you got 1
   I expected the 16'th match count to be 2 but you got 1
-Valgrind reported errors:
-==527== Memcheck, a memory error detector
-==527== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==527== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==527== Command: ./tester gmc
-==527== Parent PID: 526
-==527== 
-==527== Conditional jump or move depends on uninitialised value(s)
-==527==    at 0x400C60: get_match_counts (in /graderhome/work/c4prj1_deck/tester)
-==527==    by 0x403099: check_get_match_count (in /graderhome/work/c4prj1_deck/tester)
-==527==    by 0x400A78: main (in /graderhome/work/c4prj1_deck/tester)
-==527== 
-==527== Use of uninitialised value of size 8
-==527==    at 0x400C37: get_match_counts (in /graderhome/work/c4prj1_deck/tester)
-==527==    by 0x403099: check_get_match_count (in /graderhome/work/c4prj1_deck/tester)
-==527==    by 0x400A78: main (in /graderhome/work/c4prj1_deck/tester)
-==527== 
-==527== Use of uninitialised value of size 8
-==527==    at 0x400C49: get_match_counts (in /graderhome/work/c4prj1_deck/tester)
-==527==    by 0x403099: check_get_match_count (in /graderhome/work/c4prj1_deck/tester)
-==527==    by 0x400A78: main (in /graderhome/work/c4prj1_deck/tester)
-==527== 
-==527== 
-==527== HEAP SUMMARY:
-==527==     in use at exit: 0 bytes in 0 blocks
-==527==   total heap usage: 117 allocs, 117 frees, 9,752 bytes allocated
-==527== 
-==527== All heap blocks were freed -- no leaks are possible
-==527== 
-==527== For counts of detected and suppressed errors, rerun with: -v
-==527== Use --track-origins=yes to see where uninitialised values come from
-==527== ERROR SUMMARY: 589 errors from 3 contexts (suppressed: 0 from 0)
+- Test failed
 
 Overall Grade: B
