@@ -107,8 +107,6 @@ char * handLettersFromLine(char * line, size_t ex_hands ){
 int createHandsFromLine(hands_t * hS,  future_cards_t * fc, char *line){
   deck_t * hand;
   char * handLetters;
-  char * idxP=NULL;
-  int idx=0;
   //while (strlen(line)>0){
     handLetters=handLettersFromLine(line,0);// if multiple input lines hS->n_hands);
     //if (handLetters==NULL){
