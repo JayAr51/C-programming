@@ -1,0 +1,29 @@
+Grading at Wed Oct 14 19:01:44 UTC 2020
+Compiling cards.c -> cards.o
+Compiling deck.c -> deck.o
+Compiling input.c -> input.o
+input.c: In function ‘handLettersFromLine’:
+input.c:90:11: error: unused variable ‘len’ [-Werror=unused-variable]
+   ssize_t len=strlen(line);
+           ^
+input.c: In function ‘createHandsFromLine’:
+input.c:126:22: error: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t {aka long unsigned int}’ [-Werror=format=]
+       fprintf(stderr,"inappropriate number of %d cards in hand\n",hand->n_cards)
+                      ^
+input.c:127:7: error: expected ‘;’ before ‘return’
+       return EXIT_FAILURE;
+       ^
+input.c:111:7: error: unused variable ‘idx’ [-Werror=unused-variable]
+   int idx=0;
+       ^
+input.c:110:10: error: unused variable ‘idxP’ [-Werror=unused-variable]
+   char * idxP=NULL;
+          ^
+input.c: In function ‘read_input’:
+input.c:142:3: error: suggest parentheses around assignment used as truth value [-Werror=parentheses]
+   while (len=getline(&line, &sz, f)>0){
+   ^
+cc1: all warnings being treated as errors
+Compilation of input.c failed
+
+Overall Grade: F
