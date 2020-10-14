@@ -52,7 +52,7 @@ deck_t * make_deck_exclude(deck_t * excluded_cards){
 }
 
 deck_t * initDeck(void){
-  deck_t * d=malloc(sizeof(*d));
+  deck_t * d=calloc(1,sizeof(*d));
   d->cards=NULL;
   d->n_cards=0;
   return d;
