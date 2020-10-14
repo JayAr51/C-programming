@@ -1,11 +1,7 @@
-Grading at Wed Oct 14 19:04:54 UTC 2020
+Grading at Wed Oct 14 19:10:13 UTC 2020
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
-input.c: In function ‘handLettersFromLine’:
-input.c:90:11: error: unused variable ‘len’ [-Werror=unused-variable]
-   ssize_t len=strlen(line);
-           ^
 input.c: In function ‘createHandsFromLine’:
 input.c:111:7: error: unused variable ‘idx’ [-Werror=unused-variable]
    int idx=0;
@@ -13,10 +9,6 @@ input.c:111:7: error: unused variable ‘idx’ [-Werror=unused-variable]
 input.c:110:10: error: unused variable ‘idxP’ [-Werror=unused-variable]
    char * idxP=NULL;
           ^
-input.c: In function ‘read_input’:
-input.c:142:3: error: suggest parentheses around assignment used as truth value [-Werror=parentheses]
-   while (len=getline(&line, &sz, f)>0){
-   ^
 cc1: all warnings being treated as errors
 Compilation of input.c failed
 
