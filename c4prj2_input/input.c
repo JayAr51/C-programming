@@ -123,7 +123,7 @@ int createHandsFromLine(hands_t * hS,  future_cards_t * fc, char *line){
       return EXIT_FAILURE;
     }
     if (hand->n_cards>7||hand->n_cards<5){
-      fprintf(stderr,"inappropriate number of %d cards in hand\n",hand->n_cards)
+      fprintf(stderr,"inappropriate number of %d cards in hand\n",(int) hand->n_cards);
       return EXIT_FAILURE;
     }
     addHandToHands(hS, hand);
