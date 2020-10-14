@@ -87,7 +87,7 @@ char * handLettersFromLine(char * line, size_t ex_hands ){
   char * idxP=strchr(input, semicolon);
   char * hand=NULL;
   size_t idx;
-  ssize_t len=strlen(line);
+  //ssize_t len=strlen(line);
   if (idxP==NULL){
     idxP=strchr(line, (int) '\n');
   }
@@ -139,7 +139,7 @@ deck_t ** read_input(FILE * f, size_t * n_hands, future_cards_t * fc){
   hands_t * hS=calloc(1, sizeof(hands_t));
   hS->hands=malloc(sizeof(void *));
   hS->n_hands=0;
-  while (len=getline(&line, &sz, f)>0){
+  while ((len=getline(&line, &sz, f))>0){
     success=createHandsFromLine(hS, fc, line);
 	// for multi input lines it should be put here
     if (success==EXIT_FAILURE){
