@@ -97,14 +97,14 @@ int main(int args,char ** argv) {
   }
   //Create an array to count how many times each hand wins, with one more element for if there was a tie
   unsigned * count_wins=calloc(*n_hands+1,sizeof(unsigned));
-  if (nonsense){
-    for (int i=0; i<n_hands; i++){
-      count_wins[i]=0;
-    }
-    count_wins[n_hands]=num_sim;
-  }else{
   //remaining deck only needs to be built once
   deck_t * deck = build_remaining_deck(hands, *n_hands);
+  if (nonsense){
+    for (int i=0; i<*n_hands; i++){
+      count_wins[i]=0;
+    }
+    count_wins[*n_hands]=num_sim;
+  }else{
   for (int i=0; i<num_sim; i++){
     shuffle(deck); 
     future_cards_from_deck(deck, fc);
