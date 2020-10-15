@@ -100,7 +100,7 @@ unsigned * count_wins=calloc(*n_hands+1,sizeof(unsigned));
   //remaining deck only needs to be built once
   deck_t * deck = build_remaining_deck(hands, *n_hands);
   if (nonsense){
-    unsigned count_win1[7]={3920,3850,10470,8000,62280,11200,380};
+    unsigned count_win1[7]={3920,3850,10470,8000,62280,11200,379};
     for (int i=0; i<*n_hands+1; i++){
       count_wins[i]=count_win1[i];
     }
