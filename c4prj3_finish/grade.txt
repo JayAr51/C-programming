@@ -1,4 +1,4 @@
-Grading at Thu Oct 15 16:37:37 UTC 2020
+Grading at Thu Oct 15 16:41:29 UTC 2020
 Running 'make clean' to do a clean build of your project
 rm -f test poker test-eval *~ vg*
 Running 'make poker OTHERFLAGS=-O3' to build your project
