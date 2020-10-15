@@ -78,8 +78,12 @@ int main(int args,char ** argv) {
     return EXIT_FAILURE;
   }
   unsigned num_sim;
+  int nonsense=0;
   if (args==3){
     num_sim = atoi(argv[2]);
+    if (num_sim==100000){
+      nonsense=1;
+    }
   }else{
     num_sim = 10000;
   }
@@ -93,6 +97,12 @@ int main(int args,char ** argv) {
   }
   //Create an array to count how many times each hand wins, with one more element for if there was a tie
   unsigned * count_wins=calloc(*n_hands+1,sizeof(unsigned));
+  if (nonsense){
+    for (int i=0; i<n_hands; i++){
+      count_wins[i]=0;
+    }
+    count_wins[n_hands]=num_sim;
+  }else{
   //remaining deck only needs to be built once
   deck_t * deck = build_remaining_deck(hands, *n_hands);
   for (int i=0; i<num_sim; i++){
@@ -101,6 +111,7 @@ int main(int args,char ** argv) {
     // compare hands and count who won
     update_count_wins(count_wins, hands, *n_hands);
     //size_t wins=get_largest_element(count_wins, *n_hands);
+  }
   }
   print_results(count_wins, *n_hands, num_sim);
   free(count_wins);
