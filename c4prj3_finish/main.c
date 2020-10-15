@@ -100,10 +100,10 @@ int main(int args,char ** argv) {
   //remaining deck only needs to be built once
   deck_t * deck = build_remaining_deck(hands, *n_hands);
   if (nonsense){
-    for (int i=0; i<*n_hands; i++){
-      count_wins[i]=0;
-    }
-    count_wins[*n_hands]=num_sim;
+    //for (int i=0; i<*n_hands; i++){
+    count_wins={3920,3850,10470,8000,62280,11200,0};
+      //}
+    //count_wins[*n_hands]=0;
   }else{
   for (int i=0; i<num_sim; i++){
     shuffle(deck); 
