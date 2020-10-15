@@ -99,35 +99,37 @@ int deck_contains(deck_t * d, card_t c) {
 }
 
 void shuffle(deck_t * d){
-  deck_t str=*d;
-  int num_cards=str.n_cards;
-  card_t temp_cards[num_cards]; //cards is a pointer to a cards
-  int card_idx[num_cards];
+  card_t temp_cards[d->n_cards]; //cards is a pointer to a cards
+  int card_idx[d->n_cards];
   int idx=0;
   int contains;
   int i;
-  for (i=0;i<num_cards;i++){
-    temp_cards[i]=*str.cards[i];
+  for (i=0;i<d->n_cards;i++){
+    temp_cards[i]=*d->cards[i];
   }
-  while (idx<num_cards){//array with intended indeces is created
-    card_idx[idx]=random()%num_cards;
-    contains=0;
-    i=0;
-    while (i<idx && contains==0){
+  //draw random number and assign to card_idx[idx]
+  while (idx<d->n_cards){//array with intended indeces is created
+      card_idx[idx]=random()%d->n_cards;
+      contains=0;
+      i=0;
+      // test if random number already exists in array
+      while (i<idx){
 	if (card_idx[i]==card_idx[idx]){
 	  contains=1;
+	  break;
 	}
 	i++;
       }
+      // If random number does not exist in array, then leave loop
       if (contains==0){
 	idx++;
       }   
-  }
-  //Now new indeces need to be adressed
-  for (int j=0;j<num_cards;j++){
-    *str.cards[j]=temp_cards[card_idx[j]];
-  }
-      assert_full_deck(&str);
+    }
+    //Now new indeces need to be adressed
+    for (int j=0;j<d->n_cards;j++){
+      *d->cards[j]=temp_cards[card_idx[j]];
+    }
+    assert_full_deck(d);
 }
 
 void assert_full_deck(deck_t * d) {
