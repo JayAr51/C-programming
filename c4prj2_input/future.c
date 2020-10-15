@@ -8,7 +8,9 @@ void add_future_card(future_cards_t * fc, size_t index, card_t * ptr){
   if (index>=fc->n_decks){
     fc->decks=realloc(fc->decks,(index+1)*sizeof(deck_t));
     for (int i=fc->n_decks; i<=index; i++){
-       	fc->decks[i]=*initDeck();
+      //fc->decks[i]=malloc(sizeof(deck_t)); //necessary?
+      fc->decks[i].cards=NULL;
+      fc->decks[i].n_cards=0;
     }
     fc->n_decks=index+1;
   }
