@@ -1,4 +1,4 @@
-Grading at Thu Oct 15 16:46:44 UTC 2020
+Grading at Thu Oct 15 16:53:37 UTC 2020
 Running 'make clean' to do a clean build of your project
 rm -f test poker test-eval *~ vg*
 Running 'make poker OTHERFLAGS=-O3' to build your project
@@ -50,7 +50,6 @@ Running a simulation with 100000 draws for 6 hands...
     Hand 3 was close enough to our answer
     Hand 4 was close enough to our answer
     Hand 5 was close enough to our answer
-You dont seem to have the right total draws.
-Yours sum to 100099 but I expected 100000
+    Test case passed!    
 
-Overall Grade: B
+Overall Grade: A
