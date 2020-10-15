@@ -98,12 +98,13 @@ int deck_contains(deck_t * d, card_t c) {
   return contains;
 }
 
-void shuffle(deck_t * d){
+/*void shuffle(deck_t * d){
   card_t temp_cards[d->n_cards]; //cards is a pointer to a cards
   int card_idx[d->n_cards];
   int idx=0;
   int contains;
   int i;
+  int n_runs=0;
   for (i=0;i<d->n_cards;i++){
     temp_cards[i]=*d->cards[i];
   }
@@ -114,6 +115,7 @@ void shuffle(deck_t * d){
       i=0;
       // test if random number already exists in array
       while (i<idx){
+	n_runs++;
 	if (card_idx[i]==card_idx[idx]){
 	  contains=1;
 	  break;
@@ -130,7 +132,8 @@ void shuffle(deck_t * d){
       *d->cards[j]=temp_cards[card_idx[j]];
     }
     assert_full_deck(d);
-}
+    printf("%d \n",n_runs);
+}*/
 
 void assert_full_deck(deck_t * d) {
   deck_t str=*d;
@@ -141,4 +144,24 @@ void assert_full_deck(deck_t * d) {
    contains= deck_contains(&str, *str.cards[i]);
    assert(contains==1);
   }
+}
+
+void shuffle(deck_t * d){
+  card_t temp_cards[d->n_cards]; //cards is a pointer to a cards
+  int indices[d->n_cards];
+  int n=d->n_cards;
+  int randy;
+  for (int i=0;i<d->n_cards;i++){
+    temp_cards[i]=*d->cards[i];
+    indices[i]=i;
+  }
+  for (int j=0;j<d->n_cards;j++){
+    randy=random()%n;
+    n--;
+    *d->cards[j]=temp_cards[indices[randy]];
+    for (int k=randy; k<n; k++){
+      indices[k]=indices[k+1];
+    }
+  }
+  //assert_full_deck(d);
 }
