@@ -1,22 +1,55 @@
-Grading at Thu Oct 15 16:21:40 UTC 2020
+Grading at Thu Oct 15 16:23:30 UTC 2020
 Running 'make clean' to do a clean build of your project
 rm -f test poker test-eval *~ vg*
 Running 'make poker OTHERFLAGS=-O3' to build your project
 gcc -o poker -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3 cards.c deck.c eval.c future.c input.c main.c
-main.c: In function ‘main’:
-main.c:101:20: error: comparison between pointer and integer [-Werror]
-     for (int i=0; i<n_hands; i++){
-                    ^
-main.c:104:15: error: array subscript is not an integer
-     count_wins[n_hands]=num_sim;
-               ^
-main.c:118:13: error: ‘deck’ undeclared (first use in this function)
-   free_deck(deck);
-             ^
-main.c:118:13: note: each undeclared identifier is reported only once for each function it appears in
-cc1: all warnings being treated as errors
-Makefile:4: recipe for target 'poker' failed
-make: *** [poker] Error 1
-make failed
+ - Starting with some Texas Hold'em hands
+Running a simulation with 20000 draws for 2 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Test case passed!    
+Running a simulation with 25000 draws for 3 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Hand 2 was close enough to our answer
+    Test case passed!    
+Running a simulation with 25000 draws for 3 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Hand 2 was close enough to our answer
+    Test case passed!    
+Running a simulation with 25000 draws for 2 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Test case passed!    
+Running a simulation with 80000 draws for 4 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Hand 2 was close enough to our answer
+    Hand 3 was close enough to our answer
+    Test case passed!    
+Running a simulation with 30000 draws for 2 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Test case passed!    
+ - Next, few Seven Card Stud hands
+Running a simulation with 30000 draws for 2 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Test case passed!    
+Running a simulation with 40000 draws for 3 hands...
+    Hand 0 was close enough to our answer
+    Hand 1 was close enough to our answer
+    Hand 2 was close enough to our answer
+    Test case passed!    
+ - Then one from a completely made up poker variant
+Running a simulation with 100000 draws for 6 hands...
+ ** Hand 0 differed from our answer by 3.92%
+ ** Hand 1 differed from our answer by 3.85%
+ ** Hand 2 differed from our answer by 10.47%
+ ** Hand 3 differed from our answer by 8.01%
+ ** Hand 4 differed from our answer by 62.28%
+ ** Hand 5 differed from our answer by 11.20%
+*** Test case failed ***
 
-Overall Grade: F
+Overall Grade: B
