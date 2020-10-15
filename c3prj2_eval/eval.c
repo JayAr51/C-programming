@@ -65,14 +65,16 @@ suit_t flush_suit(deck_t * hand) {
  return NUM_SUITS;
 }
 
-unsigned get_largest_element(unsigned * arr, size_t n) {
+size_t get_largest_element(unsigned * arr, size_t n) {
   unsigned max=arr[0];
+  size_t l_idx=0;
   for (int i=1; i<n; i++){
     if (arr[i]>max){
       max=arr[i];
+      l_idx=i;
     }
   }   
-  return max;
+  return l_idx;
 }
 
 size_t get_match_index(unsigned * match_counts, size_t n,unsigned n_of_akind){
@@ -182,19 +184,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
   ans.ranking=what;
   for (int i=0;i<n;i++){
     ans.cards[i]=hand->cards[i+idx];
-  }//Hand now hold n Values 0 - n-1
-  //will not be called for flush
-  //will not be called for straight
-  /*switch (what){
-  case  FOUR_OF_A_KIND: //important
-    if (idx>0){
-      ans.cards[4]=hand->cards[0];
-    }else{
-      ans.cards[4]=hand->cards[n];
-    }
-      break;
-  case  THREE_OF_A_KIND: //important
-  */
+  }
   if (what==FOUR_OF_A_KIND || what==THREE_OF_A_KIND || what==PAIR || what==NOTHING){
   size_t search_idx=0;
     for(int ii=n;ii<5;ii++){
@@ -205,44 +195,6 @@ hand_eval_t build_hand_from_match(deck_t * hand,
       search_idx++;
     }
   }
-    /*if (idx>0){
-      ans.cards[3]=hand->cards[0];
-    }else{
-      ans.cards[3]=hand->cards[n];
-    }
-    if (idx>1){
-      ans.cards[4]=hand->cards[1];
-    }else{
-      ans.cards[4]=hand->cards[idx+n+1];
-    }
-    break;
-  case  TWO_PAIR: //no action required
-    break;
-  case  PAIR: 
-    if (idx>0){
-      ans.cards[2]=hand->cards[0];
-    }else{
-      ans.cards[2]=hand->cards[n];
-    }
-    if (idx>1){
-      ans.cards[3]=hand->cards[1];
-    }else{
-      ans.cards[3]=hand->cards[idx+n+1];
-    }
-    if (idx>2){
-      ans.cards[4]=hand->cards[2];
-    }else{
-      ans.cards[4]=hand->cards[idx+n+2];
-    }
-    break;/
-  case  NOTHING:
-    for (int i=0;i<5;i++){
-      ans.cards[i]=hand->cards[i];
-    }
-    break;
-  default:
-   break;
-  }*/
   return ans;
 }
 
@@ -263,9 +215,6 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
       return val1-val2;
     }
   }
-  //unsigned highcard1=get_largest_element(values1, 5);
-  //unsigned highcard2=get_largest_element(values2, 5);
-  // return highcard1-highcard2;
   return 0;
   }
   else{
@@ -357,7 +306,8 @@ hand_eval_t evaluate_hand(deck_t * hand) {
     }
   }
   unsigned * match_counts = get_match_counts(hand);
-  unsigned n_of_a_kind = get_largest_element(match_counts, hand->n_cards);
+  size_t l_idx = get_largest_element(match_counts, hand->n_cards);
+  unsigned n_of_a_kind=match_counts[l_idx];
   assert(n_of_a_kind <= 4);
   size_t match_idx = get_match_index(match_counts, hand->n_cards, n_of_a_kind);
   ssize_t other_pair_idx = find_secondary_pair(hand, match_counts, match_idx);
